@@ -1,15 +1,17 @@
 import { Button } from "react-bootstrap";
-
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 function NewTweet() {
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          dispatch(createTweet(inputValue));
         }}
       >
         <textarea
