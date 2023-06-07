@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { Home } from "../../assets";
+
 function DinamicSidebar() {
   return (
     <>
@@ -6,9 +9,7 @@ function DinamicSidebar() {
           href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
         >
-          <svg className="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap" />
-          </svg>
+          <svg className="bi me-2" width="40" height="32"></svg>
           <span className="fs-4">Sidebar</span>
         </a>
         <hr />
@@ -23,33 +24,25 @@ function DinamicSidebar() {
           </li>
           <li>
             <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16">
-                <use xlink:href="#speedometer2" />
-              </svg>
+              <svg className="bi me-2" width="16" height="16"></svg>
               Dashboard
             </a>
           </li>
           <li>
             <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16">
-                <use xlink:href="#table" />
-              </svg>
+              <svg className="bi me-2" width="16" height="16"></svg>
               Orders
             </a>
           </li>
           <li>
             <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16">
-                <use xlink:href="#grid" />
-              </svg>
+              <svg className="bi me-2" width="16" height="16"></svg>
               Products
             </a>
           </li>
           <li>
             <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16">
-                <use xlink:href="#people-circle" />
-              </svg>
+              <svg className="bi me-2" width="16" height="16"></svg>
               Customers
             </a>
           </li>
@@ -72,29 +65,29 @@ function DinamicSidebar() {
             />
             <strong>mdo</strong>
           </a>
-          <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <ul className="dropdown-menu text-small shadow">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 New project...
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 Profile
-              </a>
+              </Link>
             </li>
             <li>
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 Sign out
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
