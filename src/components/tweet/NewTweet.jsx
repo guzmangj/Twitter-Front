@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import createTweet from "../../redux/tweetSlice";
 
 function NewTweet() {
   const [inputValue, setInputValue] = useState("");
@@ -14,14 +15,14 @@ function NewTweet() {
           dispatch(createTweet(inputValue));
         }}
       >
-        <textarea
+        <input
           placeholder="example textarea"
           id="exampleControlsTextarea1"
           rows="3"
           name=""
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-        ></textarea>
+        />
         <Button type="submit">Tweet</Button>
       </form>
     </>
