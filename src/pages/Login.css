@@ -1,3 +1,7 @@
+.main {
+  background-color: var(--color-secundario);
+}
+
 .loginSide {
   background: var(--color-principal);
 }
