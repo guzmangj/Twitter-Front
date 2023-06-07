@@ -1,0 +1,39 @@
+#logoutButton {
+  position: fixed;
+  bottom: 0;
+  width: 15.35rem;
+  margin-bottom: 1rem;
+}
+
+.active {
+  background-color: var(--color-principal) !important;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li:hover {
+  background-color: rgba(128, 128, 128, 0.164);
+  border-radius: 1.5rem;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 1399px) {
+  #logoutButton {
+    width: 10.3rem;
+    position: fixed;
+    bottom: 0;
+  }
+  .tweetButton {
+    width: 10.3rem !important;
+  }
+  .sidebarTotal {
+    width: 20rem;
+  }
+}
