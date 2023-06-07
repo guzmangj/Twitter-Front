@@ -3,10 +3,30 @@ import { NavLink } from "react-router-dom";
 import Delete from "/src/assets/delete.svg";
 import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+// import { setToken } from "../redux/userSlice";
 
 import "./TweetList.css";
 
 function TweetList() {
+  const [tweets, setTweets] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function getTweets() {
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:3000/tweets",
+      });
+      //   dispatch(setTweets(response.data.token));
+      setTweets(response.data);
+    }
+    getTweets();
+  }, []);
+
+  console.log(tweets);
+
   return (
     // map de los tweets
     <div className="tweet border border-top-0 p-3">
