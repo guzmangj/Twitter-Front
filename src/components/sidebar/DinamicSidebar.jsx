@@ -102,3 +102,5 @@ function DinamicSidebar() {
     </>
   );
 }
+
+export default DinamicSidebar;
