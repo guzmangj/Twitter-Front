@@ -1,8 +1,9 @@
 import React from "react";
+import "./Register.css";
 
 function Register() {
   return (
-    <main style={{ background: "var(--color-secundario)" }}>
+    <main className="main" style={{ background: "var(--color-secundario)" }}>
       <div className="container d-flex align-items-center justify-content-center vh-100">
         <div className="row" style={{ width: "100%", height: "75%" }}>
           <div className="d-none d-md-flex col-md-5 col-lg-7 loginSide rounded-start">

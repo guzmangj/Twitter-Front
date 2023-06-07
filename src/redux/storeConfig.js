@@ -5,7 +5,7 @@ import userReducer from "./userSlice";
 const store = configureStore({
   reducer: {
     user: userReducer,
-    tweet: tweetReducer,
+    // tweet: tweetReducer,
   },
 });
 
