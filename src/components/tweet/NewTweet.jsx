@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { useState } from "react";
 
 function NewTweet() {
   const [inputValue, setInputValue] = useState("");
