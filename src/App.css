@@ -1,1 +1,4 @@
-
+.btn-login {
+  color: white;
+  background: var(--color-principal);
+}
