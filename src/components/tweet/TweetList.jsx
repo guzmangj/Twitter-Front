@@ -24,6 +24,7 @@ function TweetList() {
     }
     getTweets();
   }, []);
+  console.log(tweets);
 
   return (
     tweets &&
@@ -33,10 +34,15 @@ function TweetList() {
           <div>
             <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
               <img
-                src=""
+                src={tweet.user.image}
                 alt="Avatar del usuario"
                 className="tweet-avatar"
-                style={{ width: "45px", height: "45px", borderRadius: "50%", marginRight: "10px" }}
+                style={{
+                  width: "45px",
+                  height: "45px",
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                }}
               />
             </NavLink>
           </div>
@@ -44,14 +50,14 @@ function TweetList() {
             <div className="d-flex justify-content-between" style={{ height: "20%" }}>
               <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
                 <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
-                  Firstname lastname
+                  {tweet.user.firstname} {tweet.user.lastname}
                 </NavLink>
                 <span className="tweet-username fw-light" style={{ color: "#888" }}>
                   <NavLink
                     to="/profile"
                     style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
                   >
-                    @username
+                    @{tweet.user.username}
                   </NavLink>
                   {/* &bull; tweet.formattedData */}
                 </span>
@@ -71,6 +77,7 @@ function TweetList() {
               }}
             >
               <div className="tweet-actions d-flex align-items-center">
+                {}
                 {/* if(tweet.likes.includes(loggedUser.id)) */}
                 <div>
                   <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
