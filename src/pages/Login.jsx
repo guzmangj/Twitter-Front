@@ -23,7 +23,7 @@ function Login() {
       },
     });
     dispatch(setToken(response.data.token));
-    console.log(response.data.token);
+    console.log(response.data);
     navigate("/home");
   }
 
