@@ -1,95 +1,71 @@
 import { Link } from "react-router-dom";
-import { Home } from "../../assets";
+import TwitterLogo from "../../assets/twitter-logo.svg";
+import HomeLogo from "../../assets/home.svg";
+import ProfileLogo from "../../assets/profile.svg";
+import Dropdown from "react-bootstrap/Dropdown";
+import "./DinamicSidebar.css";
 
 function DinamicSidebar() {
   return (
     <>
-      <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{ width: "280px" }}>
-        <a
-          href="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
-        >
-          <svg className="bi me-2" width="40" height="32"></svg>
-          <span className="fs-4">Sidebar</span>
-        </a>
-        <hr />
-        <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <a href="#" className="nav-link active" aria-current="page">
-              <svg className="bi me-2" width="16" height="16">
-                <use xlink:href="#home" />
-              </svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16"></svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16"></svg>
-              Orders
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16"></svg>
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-dark">
-              <svg className="bi me-2" width="16" height="16"></svg>
-              Customers
-            </a>
-          </li>
-        </ul>
-        <hr />
-        <div className="dropdown">
+      <div
+        className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light "
+        style={{ width: "280px" }}
+      >
+        <div className="my-3 mb-md-0 me-md-auto link-dark text-decoration-none">
           <a
-            href="#"
-            className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-            id="dropdownUser2"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+            href="/"
+            className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
           >
+            <img className="mb-3" src={TwitterLogo} alt="Twitter Logo" />
+          </a>
+        </div>
+        <ul className="nav nav-pills flex-column mb-auto">
+          <li className="nav-item d-flex align-items-center py-2 px-3 w-50">
+            <img src={HomeLogo} alt="Logo Home" width={23} height={23} className="sidebarIcon" />
+            <Link to="#" className="fs-5 mx-3">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item d-flex align-items-center py-2 px-3 w-50">
+            <img
+              src={ProfileLogo}
+              alt="Profile Logo"
+              width={23}
+              height={23}
+              className="sidebarIcon"
+            />
+            <Link to="#" className="fs-5 mx-3">
+              Profile
+            </Link>
+          </li>
+
+          <button className="btn btn-login rounded-pill tweetButton my-2 w-100 fs-5 fw-bold py-2">
+            Tweet
+          </button>
+        </ul>
+        <div id="logoutButton">
+          <div className="d-flex justify-content-center align-items-center">
             <img
               src="https://github.com/mdo.png"
-              alt=""
-              width="32"
-              height="32"
-              className="rounded-circle me-2"
+              alt="User avatar"
+              width="40"
+              height="40"
+              className="rounded-circle me-2 "
             />
-            <strong>mdo</strong>
-          </a>
-          <ul className="dropdown-menu text-small shadow">
-            <li>
-              <Link className="dropdown-item" to="#">
-                New project...
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="#">
-                Settings
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="#">
-                Profile
-              </Link>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <Link className="dropdown-item" to="#">
-                Sign out
-              </Link>
-            </li>
-          </ul>
+
+            <div className=" flex-fill">
+              <p className="m-0 fw-bold ">Nombre de usuario</p>
+              <p className="m-0 ">@Username</p>
+            </div>
+            <Dropdown>
+              <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Log out @username</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
       </div>
     </>
