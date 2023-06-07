@@ -1,6 +1,32 @@
 import "./Login.css";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setToken } from "../redux/userSlice";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const response = await axios({
+      method: "post",
+      url: "http://localhost:3000/login",
+      data: {
+        email: emailValue,
+        password: passwordValue,
+      },
+    });
+    dispatch(setToken(response.data.token));
+    console.log(response.data.token);
+    navigate("/home");
+  }
+
   return (
     <>
       <main style={{ background: "var(--color-secundario)" }}>
@@ -21,7 +47,7 @@ function Login() {
             </div>
             <div className="login-container col-sm-12 col-md-7 col-lg-5 bg-white rounded-end d-flex align-items-center">
               <div className="container mx-4">
-                <form method="post" action="/login">
+                <form onSubmit={handleSubmit}>
                   <div className="container p-2 mb-2">
                     <h1 style={{ color: "#353535", fontSize: "24px", marginBottom: "8px" }}>
                       Login
@@ -36,7 +62,9 @@ function Login() {
                       name="email"
                       className="form-control"
                       id="email"
-                      placeholder="Username or email"
+                      placeholder="Email"
+                      value={emailValue}
+                      onChange={(event) => setEmailValue(event.target.value)}
                       style={{ fontSize: "12px", padding: "8px 12px 8px 12px", color: "gray" }}
                     />
                   </div>
@@ -47,6 +75,8 @@ function Login() {
                       className="form-control"
                       id="password"
                       placeholder="Password"
+                      value={passwordValue}
+                      onChange={(event) => setPasswordValue(event.target.value)}
                       style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
                     />
                   </div>
