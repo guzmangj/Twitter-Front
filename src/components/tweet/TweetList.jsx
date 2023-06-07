@@ -5,12 +5,12 @@ import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-// import { setToken } from "../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./TweetList.css";
 
 function TweetList() {
+  const user = useSelector((state) => state.user);
   const [tweets, setTweets] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,12 +19,13 @@ function TweetList() {
         method: "get",
         url: "http://localhost:3000/tweets",
       });
+
       //   dispatch(setTweets(response.data.token));
       setTweets(response.data);
     }
     getTweets();
   }, []);
-  console.log(tweets);
+  console.log(user.id);
 
   return (
     tweets &&
@@ -77,7 +78,6 @@ function TweetList() {
               }}
             >
               <div className="tweet-actions d-flex align-items-center">
-                {}
                 {/* if(tweet.likes.includes(loggedUser.id)) */}
                 <div>
                   <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
@@ -93,12 +93,15 @@ function TweetList() {
                 </div>
                 <div>{tweet.likes.length}</div>
               </div>
-              {/* if(loggedUser.id === user.id && profile) */}
-              <div>
-                <form method="post" action="">
-                  <img src={Delete} alt="Delete icon" />
-                </form>
-              </div>
+              {user.id === tweet.user._id ? (
+                <div>
+                  <form method="post" action="">
+                    <img src={Delete} alt="Delete icon" />
+                  </form>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
         </div>
