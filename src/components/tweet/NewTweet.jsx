@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import createTweet from "../../redux/tweetSlice";
 
 function NewTweet() {
   const [inputValue, setInputValue] = useState("");
