@@ -22,8 +22,7 @@ function Login() {
         password: passwordValue,
       },
     });
-    dispatch(setToken(response.data.token));
-    console.log(response.data);
+    response.data.token && dispatch(setToken(response.data.token));
     navigate("/home");
   }
 

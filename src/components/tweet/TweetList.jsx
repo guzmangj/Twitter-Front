@@ -28,7 +28,7 @@ function TweetList() {
   return (
     tweets &&
     tweets.map((tweet) => (
-      <div className="tweet border border-top-0 p-3">
+      <div key={tweet._id} className="tweet border border-top-0 p-3">
         <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
           <div>
             <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>

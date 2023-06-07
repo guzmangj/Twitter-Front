@@ -11,10 +11,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      {/* <Route element={<ProtectedRoute user={user} />}> */}
-      <Route path="/home" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      {/* </Route> */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
     </Routes>
   );
 }
