@@ -8,10 +8,7 @@ import "./DinamicSidebar.css";
 function DinamicSidebar() {
   return (
     <>
-      <div
-        className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light "
-        style={{ width: "280px" }}
-      >
+      <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
         <div className="my-3 mb-md-0">
           <a
             href="/"
@@ -36,9 +33,7 @@ function DinamicSidebar() {
             </Link>
           </li>
 
-          <button className="btn btn-login rounded-pill tweetButton my-2 w-100 fs-5 fw-bold py-2">
-            Tweet
-          </button>
+          <button className="btn btn-login rounded-pill my-2 fs-5 fw-bold py-2">Tweet</button>
         </ul>
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
