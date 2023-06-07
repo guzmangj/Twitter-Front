@@ -7,7 +7,7 @@ function TweetList() {
     <div className="tweet border border-top-0 p-3">
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
         <div>
-          <NavLink to="/usuarios/<%= tweet.user.id %>" style="text-decoration: none; color: black">
+          <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
             <img
               src="<%= tweet.user.image %>"
               alt="Avatar del usuario"
@@ -18,20 +18,17 @@ function TweetList() {
         </div>
         <div className="w-100">
           <div className="d-flex justify-content-between" style="height: 20%">
-            <div className="tweet-fullname d-flex" style="font-weight: bold">
-              <a
-                style={{ textDecoration: "none", color: "black" }}
-                href="/usuarios/<%= tweet.user.id %>"
-              >
+            <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
+              <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
                 Firstname y lastname
-              </a>
+              </NavLink>
               <span className="tweet-username fw-light" style="color: #888">
-                <a
+                <NavLink
+                  to="/profile"
                   style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
-                  href="/usuarios/<%= tweet.user.id %>"
                 >
                   @username
-                </a>
+                </NavLink>
                 {/* &bull; tweet.formattedData */}
               </span>
             </div>
