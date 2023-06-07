@@ -27,8 +27,7 @@ function TweetList() {
 
   console.log(tweets);
 
-  return (
-    // map de los tweets
+  return tweets.map((tweet) => (
     <div className="tweet border border-top-0 p-3">
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
         <div>
@@ -59,7 +58,7 @@ function TweetList() {
             </div>
           </div>
           <div className="tweet-content mt-1" style={{ marginBottom: "10px", height: "40%" }}>
-            Tweet content
+            {tweet.content}
           </div>
           <div
             className="tweet-footer"
@@ -78,14 +77,14 @@ function TweetList() {
                   <img src={Likeactive} alt="Activelike icon" />
                 </form>
               </div>
-              <div>likes length</div>
+              <div>{tweet.likes.length}</div>
               {/* else  */}
               <div>
                 <form method="post" action="/like/<%= tweet.id %>?_method=UPDATE">
                   <img src={Like} alt="Like icon" />
                 </form>
               </div>
-              <div>likes length</div>
+              <div>{tweet.likes.length}</div>
             </div>
             {/* if(loggedUser.id === user.id && profile) */}
             <div>
@@ -97,7 +96,7 @@ function TweetList() {
         </div>
       </div>
     </div>
-  );
+  ));
 }
 
 export default TweetList;
