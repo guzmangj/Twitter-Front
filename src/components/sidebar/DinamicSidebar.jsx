@@ -12,29 +12,25 @@ function DinamicSidebar() {
         className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light "
         style={{ width: "280px" }}
       >
-        <div className="my-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <div className="my-3 mb-md-0">
           <a
             href="/"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
           >
-            <img className="mb-3" src={TwitterLogo} alt="Twitter Logo" />
+            <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
           </a>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item d-flex align-items-center py-2 px-3 w-50">
+          <li className="nav-item d-flex align-items-center py-2 px-3" id="homeHover">
             <img src={HomeLogo} alt="Logo Home" width={23} height={23} className="sidebarIcon" />
             <Link to="#" className="fs-5 mx-3">
               Home
             </Link>
           </li>
-          <li className="nav-item d-flex align-items-center py-2 px-3 w-50">
-            <img
-              src={ProfileLogo}
-              alt="Profile Logo"
-              width={23}
-              height={23}
-              className="sidebarIcon"
-            />
+          <li className="nav-item d-flex align-items-center py-2 px-3" id="profileHover">
+            <div>
+              <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon" />
+            </div>
             <Link to="#" className="fs-5 mx-3">
               Profile
             </Link>
