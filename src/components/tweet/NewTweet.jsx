@@ -9,26 +9,41 @@ function NewTweet() {
   const dispatch = useDispatch();
 
   return (
-    <section className="container">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(createTweet(inputValue));
-        }}
-      >
-        <input
-          className=" p-4 input-text"
-          placeholder="example textarea"
-          id="exampleControlsTextarea1"
-          rows="3"
-          name=""
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <Button type="submit" className="btn-input">
-          Tweet
-        </Button>
-      </form>
+    <section>
+      <div className="d-flex">
+        <div>
+          <img
+            src=""
+            alt="Profile picture default"
+            style={{ width: "50px", height: "50px" }}
+            class="rounded-circle"
+          />
+        </div>
+        <form
+          className="form-floating flex-fill mx-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(createTweet(inputValue));
+          }}
+        >
+          <div>
+            <input
+              className=" p-4 input-text"
+              placeholder="example textarea"
+              id="exampleControlsTextarea1"
+              rows="3"
+              name=""
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+          </div>
+          <div className="d-flex justify-content-end">
+            <Button type="submit" className="btn btn-login rounded-pill mt-2">
+              Tweet
+            </Button>
+          </div>
+        </form>
+      </div>
     </section>
   );
 }
