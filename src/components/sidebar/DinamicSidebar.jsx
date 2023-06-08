@@ -5,22 +5,10 @@ import ProfileLogo from "../../assets/profile.svg";
 import Write from "../../assets/write.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DinamicSidebar.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function DinamicSidebar() {
-  const [userData, setUserData] = useState("");
-
-  useEffect(() => {
-    async function getUserData() {
-      const response = await axios({
-        method: "get",
-        url: "http://localhost:3000/user",
-      });
-      setUserData(response.data);
-    }
-    getUserData();
-  }, []);
+  const userData = useSelector((state) => state.user);
 
   return (
     <>
