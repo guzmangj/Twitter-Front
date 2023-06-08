@@ -25,28 +25,32 @@ function DinamicSidebar() {
     <>
       <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
         <div className="my-3 mb-md-0">
-          <a
-            href="/"
+          <Link
+            to="/home"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
           >
             <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
-          </a>
+          </Link>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item d-flex align-items-center py-2 px-3" id="homeHover">
-            <img src={HomeLogo} alt="Logo Home" width={23} height={23} className="sidebarIcon" />
-            <Link to="#" className="fs-5 mx-3">
+          <Link to="/home" id="homeHover">
+            <li className="nav-item d-flex align-items-center py-2 mx-3 fs-5">
+              <img
+                src={HomeLogo}
+                alt="Logo Home"
+                width={23}
+                height={23}
+                className="sidebarIcon me-3"
+              />
               Home
-            </Link>
-          </li>
-          <li className="nav-item d-flex align-items-center py-2 px-3" id="profileHover">
-            <div>
-              <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon" />
-            </div>
-            <Link to="#" className="fs-5 mx-3">
+            </li>
+          </Link>
+          <Link to="/profile" id="profileHover">
+            <li className="nav-item d-flex align-items-center py-2 mx-3 fs-5">
+              <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
               Profile
-            </Link>
-          </li>
+            </li>
+          </Link>
 
           <button className="btn btn-login rounded-pill my-2 fs-5 fw-bold py-2">Tweet</button>
         </ul>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setToken } from "../redux/userSlice";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ function Login() {
                     <p style={{ color: "#353535", fontWeight: "350", fontSize: "12px" }}>
                       Don't have an account?
                     </p>
-                    <a
+                    <Link
                       style={{
                         color: "var(--color-principal)",
                         fontWeight: "300",
@@ -94,10 +94,10 @@ function Login() {
                         textDecoration: "none",
                         paddingLeft: "3px",
                       }}
-                      href="/usuarios/crear"
+                      to="/register"
                     >
                       Sign up
-                    </a>
+                    </Link>
                   </div>
                 </form>
               </div>
