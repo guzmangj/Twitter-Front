@@ -5,23 +5,10 @@ import ProfileLogo from "../../assets/profile.svg";
 import Write from "../../assets/write.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DinamicSidebar.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function DinamicSidebar() {
-  const [userData, setUserData] = useState("");
-
-  useEffect(() => {
-    async function getUserData() {
-      const response = await axios({
-        method: "get",
-        url: "http://localhost:3000/user",
-      });
-      setUserData(response.data);
-    }
-    getUserData();
-  }, [userData]);
-  console.log(userData);
+  const userData = useSelector((state) => state.user);
 
   return (
     <>
@@ -65,7 +52,7 @@ function DinamicSidebar() {
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
-              src="https://github.com/mdo.png"
+              src={userData.image}
               alt="User avatar"
               width="40"
               height="40"
@@ -76,7 +63,9 @@ function DinamicSidebar() {
               <p className="m-0 fw-bold ">
                 {userData.firstname} {userData.lastname}
               </p>
-              <p className="m-0 ">@{userData.username}</p>
+              <p className="m-0 ">
+                <small>@{userData.username}</small>
+              </p>
             </div>
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
