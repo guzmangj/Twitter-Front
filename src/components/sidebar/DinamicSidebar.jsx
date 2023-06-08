@@ -4,8 +4,23 @@ import HomeLogo from "../../assets/home.svg";
 import ProfileLogo from "../../assets/profile.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DinamicSidebar.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function DinamicSidebar() {
+  const [userData, setUserData] = useState("");
+
+  useEffect(() => {
+    async function getUserData() {
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:3000/users",
+      });
+      setUserData(response.data);
+    }
+    getUserData();
+  }, [userData]);
+
   return (
     <>
       <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
@@ -52,8 +67,8 @@ function DinamicSidebar() {
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Log out @username</Dropdown.Item>
+                <Dropdown.Item href="/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="/">Log out</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
