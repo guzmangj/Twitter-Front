@@ -21,7 +21,7 @@ function NewTweet() {
             src={
               user.image.includes("https")
                 ? user.image
-                : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userData.image}`
+                : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${user.image}`
             }
             alt="Profile picture default"
             style={{ width: "60px", height: "60px" }}
