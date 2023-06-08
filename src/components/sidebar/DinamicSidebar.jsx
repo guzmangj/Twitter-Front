@@ -20,7 +20,7 @@ function DinamicSidebar() {
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item d-flex align-items-center py-2 px-3" id="homeHover">
             <img src={HomeLogo} alt="Logo Home" width={23} height={23} className="sidebarIcon" />
-            <Link to="#" className="fs-5 mx-3">
+            <Link to="/home" className="fs-5 mx-3">
               Home
             </Link>
           </li>
@@ -28,7 +28,7 @@ function DinamicSidebar() {
             <div>
               <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon" />
             </div>
-            <Link to="#" className="fs-5 mx-3">
+            <Link to="/profile" className="fs-5 mx-3">
               Profile
             </Link>
           </li>

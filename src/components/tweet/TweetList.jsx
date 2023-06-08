@@ -39,7 +39,6 @@ function TweetList() {
     }
     getUserInfo();
   }, []);
-  console.log(userInfo);
 
   return (
     tweets &&
@@ -92,21 +91,27 @@ function TweetList() {
               }}
             >
               <div className="tweet-actions d-flex align-items-center">
-                {/* if(tweet.likes.includes(loggedUser.id)) */}
-                <div>
-                  <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
-                    <img src={Likeactive} alt="Activelike icon" />
-                  </form>
-                </div>
-                <div>{tweet.likes.length}</div>
-                {/* else  */}
-                <div>
-                  <form method="post" action="/like/<%= tweet.id %>?_method=UPDATE">
-                    <img src={Like} alt="Like icon" />
-                  </form>
-                </div>
-                <div>{tweet.likes.length}</div>
+                {tweet.likes.includes(userInfo.id) ? (
+                  <>
+                    <div>
+                      <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
+                        <img src={Likeactive} alt="Activelike icon" />
+                      </form>
+                    </div>
+                    <div>{tweet.likes.length}</div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <form method="post" action="/like/<%= tweet.id %>?_method=UPDATE">
+                        <img src={Like} alt="Like icon" />
+                      </form>
+                    </div>
+                    <div>{tweet.likes.length}</div>
+                  </>
+                )}
               </div>
+
               {userInfo.id === tweet.user._id ? (
                 <div>
                   <form method="post" action="">
