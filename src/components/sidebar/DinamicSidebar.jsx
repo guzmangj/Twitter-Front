@@ -12,19 +12,21 @@ function DinamicSidebar() {
   console.log(user);
   return (
     <>
-      <div className="bg-white d-flex flex-column justify-content-end bg-light position-fixed">
-        <div>
+      <div className="position-fixed">
+        <div className="my-3 mb-md-0">
           <div className="my-3 mb-md-0">
             <Link
               to="/home"
               className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
             >
-              <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
+              <div>
+                <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
+              </div>
             </Link>
           </div>
-          <ul className="nav nav-pills flex-column mb-auto">
+          <div className="nav nav-pills flex-column mb-auto">
             <Link to="/home" id="homeHover" className="py-2">
-              <li className="nav-item d-flex align-items-center  mx-3 fs-5">
+              <div className="nav-item d-flex align-items-center  mx-3 fs-5">
                 <img
                   src={HomeLogo}
                   alt="Logo Home"
@@ -33,25 +35,28 @@ function DinamicSidebar() {
                   className="sidebarIcon me-3"
                 />
                 <span className="sidebarText">Home</span>
-              </li>
+              </div>
             </Link>
+          </div>
+          <div>
             <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
-              <li className="nav-item d-flex align-items-center mx-3 fs-5">
+              <div className="nav-item d-flex align-items-center mx-3 fs-5">
                 <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
                 <span className="sidebarText">Profile</span>
-              </li>
+              </div>
             </Link>
-
-            <Link to="/home">
-              <button
-                id="tweetButton"
-                className="btn btn-login rounded-pill py-2 fs-5 fw-bold mt-2 py-2"
-              >
-                <span className="sidebarText">Tweet</span>
-                <img src={Write} alt="Tweet write" className="d-none tweetImage me-3" />
-              </button>
-            </Link>
-          </ul>
+          </div>
+        </div>
+        <div>
+          <Link to="/home">
+            <button
+              id="tweetButton"
+              className="btn btn-login rounded-pill py-2 fs-5 fw-bold mt-2 py-2"
+            >
+              <span className="sidebarText">Tweet</span>
+              <img src={Write} alt="Tweet write" className="d-none tweetImage me-3" />
+            </button>
+          </Link>
         </div>
 
         <div className="sidebarTotal position-fixed" id="logoutButton">
