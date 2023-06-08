@@ -5,15 +5,32 @@ import TweetList from "../components/tweet/TweetList";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function Profile() {
   const [userInfo, setUserInfo] = useState("");
   const user = useSelector((state) => state.user);
+  // useEffect(() => {
+  //   async function getUserInfo() {
+  //     const response = await axios({
+  //       method: "get",
+  //       url: "http://localhost:3000/profile",
+  //       headers: {
+  //         Authorization: `Bearer ${user.token}`,
+  //       },
+  //     });
+  //     setUserInfo(response.data);
+  //   }
+
+  //   getUserInfo();
+  // }, []);
+  const params = useParams();
+
   useEffect(() => {
-    async function getUserInfo() {
+    async function getUsers() {
       const response = await axios({
         method: "get",
-        url: "http://localhost:3000/profile",
+        url: `http://localhost:3000/profile/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -21,7 +38,7 @@ function Profile() {
       setUserInfo(response.data);
     }
 
-    getUserInfo();
+    getUsers();
   }, []);
 
   return (

@@ -11,9 +11,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/profile/:id" element={<Profile />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/profile/:username" element={<Profile />} />
       </Route>
     </Routes>
   );

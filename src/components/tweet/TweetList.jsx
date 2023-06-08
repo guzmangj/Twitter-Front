@@ -32,7 +32,10 @@ function TweetList() {
       <div key={tweet._id} className="tweet border border-top-0 p-3">
         <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
           <div>
-            <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
+            <NavLink
+              to={`/profile/${tweet.user._id}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <img
                 src={tweet.user.image}
                 alt="Avatar del usuario"
@@ -50,14 +53,14 @@ function TweetList() {
             <div className="d-flex justify-content-between" style={{ height: "20%" }}>
               <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
                 <NavLink
-                  to={`/profile/${tweet.user.username}`}
+                  to={`/profile/${tweet.user._id}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {tweet.user.firstname} {tweet.user.lastname}
                 </NavLink>
                 <span className="tweet-username fw-light" style={{ color: "#888" }}>
                   <NavLink
-                    to={`/profile/${tweet.user.username}`}
+                    to={`/profile/${tweet.user._id}`}
                     style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
                   >
                     @{tweet.user.username}
