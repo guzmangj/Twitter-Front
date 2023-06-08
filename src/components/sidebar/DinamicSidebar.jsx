@@ -5,10 +5,13 @@ import ProfileLogo from "../../assets/profile.svg";
 import Write from "../../assets/write.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DinamicSidebar.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/userSlice";
 
 function DinamicSidebar() {
   const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
   console.log(user);
   return (
     <>
@@ -79,7 +82,9 @@ function DinamicSidebar() {
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="/">Log out</Dropdown.Item>
+                <Dropdown.Item href="/" onClick={() => dispatch(logout())}>
+                  Log out
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
