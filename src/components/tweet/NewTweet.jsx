@@ -8,17 +8,21 @@ import "./NewTweet.css";
 function NewTweet() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
-  const userImage = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
 
   return (
     <section>
-      <div class="border p-3">
+      <div className="border p-3">
         <div>
-          <h2 class="fs-5 fw-semibold mb-3">Home</h2>
+          <h2 className="fs-5 fw-semibold mb-3">Home</h2>
         </div>
         <div className="d-flex">
           <img
-            src={userImage.image}
+            src={
+              user.image.includes("https")
+                ? user.image
+                : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userData.image}`
+            }
             alt="Profile picture default"
             style={{ width: "60px", height: "60px" }}
             className="rounded-circle"
