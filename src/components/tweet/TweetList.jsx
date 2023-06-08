@@ -4,15 +4,15 @@ import Delete from "/src/assets/delete.svg";
 import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setTweets } from "../../redux/tweetSlice";
 
 import "./TweetList.css";
 
 function TweetList() {
-  const [userInfo, setUserInfo] = useState("");
   const user = useSelector((state) => state.user);
-  const [tweets, setTweets] = useState("");
+  const tweet = useSelector((state) => state.tweet);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,28 +21,14 @@ function TweetList() {
         method: "get",
         url: "http://localhost:3000/tweets",
       });
-      setTweets(response.data);
+      response.data && dispatch(setTweets(response.data));
     }
     getTweets();
   }, []);
 
-  useEffect(() => {
-    async function getUserInfo() {
-      const response = await axios({
-        method: "get",
-        url: "http://localhost:3000/profile",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      setUserInfo(response.data);
-    }
-    getUserInfo();
-  }, []);
-
   return (
-    tweets &&
-    tweets.map((tweet) => (
+    tweet &&
+    tweet.map((tweet) => (
       <div key={tweet._id} className="tweet border border-top-0 p-3">
         <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
           <div>
@@ -91,7 +77,7 @@ function TweetList() {
               }}
             >
               <div className="tweet-actions d-flex align-items-center">
-                {tweet.likes.includes(userInfo.id) ? (
+                {tweet.likes.includes(user.id) ? (
                   <>
                     <div>
                       <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
@@ -112,7 +98,7 @@ function TweetList() {
                 )}
               </div>
 
-              {userInfo.id === tweet.user._id ? (
+              {user.id === tweet.user._id ? (
                 <div>
                   <form method="post" action="">
                     <img src={Delete} alt="Delete icon" />

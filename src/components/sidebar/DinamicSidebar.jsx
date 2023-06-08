@@ -20,8 +20,7 @@ function DinamicSidebar() {
       setUserData(response.data);
     }
     getUserData();
-  }, [userData]);
-  console.log(userData);
+  }, []);
 
   return (
     <>
