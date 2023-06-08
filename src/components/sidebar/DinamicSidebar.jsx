@@ -12,8 +12,8 @@ function DinamicSidebar() {
   console.log(user);
   return (
     <>
-      <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
-        <div className="position-fixed sidebarTotal">
+      <div className="bg-white d-flex flex-column justify-content-end bg-light position-fixed">
+        <div>
           <div className="my-3 mb-md-0">
             <Link
               to="/home"
@@ -54,7 +54,7 @@ function DinamicSidebar() {
           </ul>
         </div>
 
-        <div className="position-fixed sidebarTotal" id="logoutButton">
+        <div className="sidebarTotal position-fixed" id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
               src={

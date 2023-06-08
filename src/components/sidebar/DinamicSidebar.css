@@ -1,12 +1,12 @@
 #logoutButton {
   bottom: 0;
-  left: 38px;
-  width: 10.3rem;
+  left: 11rem;
+  width: 14.5rem;
   margin-bottom: 1rem;
 }
 
 #tweetButton {
-  width: 12rem;
+  width: 12.3rem;
 }
 
 #dropdown-basic {
@@ -18,12 +18,64 @@ a {
   color: black;
 }
 
+#profileHover:hover {
+  background-color: rgba(128, 128, 128, 0.164);
+  border-radius: 1.5rem;
+  width: 8.05rem;
+}
+
+#homeHover:hover {
+  background-color: rgba(128, 128, 128, 0.164);
+  border-radius: 1.5rem;
+  height: 100%;
+  width: 8.1rem;
+}
+
 .sidebarIcon {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-@media (min-width: 1199px) {
+@media (max-width: 1570px) {
+  #logoutButton {
+    bottom: 0;
+    left: 38px;
+    width: 13.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #tweetButton {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  #logoutButton {
+    bottom: 0;
+    left: 30px;
+    width: 11rem;
+    margin-bottom: 1rem;
+  }
+
+  #tweetButton {
+    width: 12rem;
+  }
+
+  #dropdown-basic {
+    padding: 0.9rem !important;
+  }
+
+  p {
+    width: 7.2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media (max-width: 1240px) {
   #profileHover:hover {
     background-color: rgba(128, 128, 128, 0.164);
     border-radius: 1.5rem;
@@ -35,6 +87,26 @@ a {
     border-radius: 1.5rem;
     height: 100%;
     width: 8.1rem;
+  }
+
+  #logoutButton {
+    bottom: 0;
+    left: 38px;
+    width: 9rem;
+    margin-bottom: 1rem;
+  }
+
+  #tweetButton {
+    width: 11rem;
+  }
+
+  p {
+    width: 200px;
+    height: 20px;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre;
   }
 }
 
