@@ -10,6 +10,12 @@ function NewTweet() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createTweet(inputValue));
+    setInputValue("");
+  };
+
   return (
     <section>
       <div className="border p-3">
@@ -27,13 +33,7 @@ function NewTweet() {
             style={{ width: "60px", height: "60px" }}
             className="rounded-circle"
           />
-          <form
-            className="form-floating flex-fill mx-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-              dispatch(createTweet(inputValue));
-            }}
-          >
+          <form className="form-floating flex-fill mx-2" onSubmit={handleFormSubmit}>
             <div>
               <input
                 className="input-text "
