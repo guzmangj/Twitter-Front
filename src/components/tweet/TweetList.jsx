@@ -25,4 +25,8 @@ function TweetList() {
   return tweet && tweet.map((tweet, index) => <Tweet tweet={tweet} key={index} />);
 }
 
+//  tweet
+//    .filter((tweet) => tweet.user._id === user.following || tweet.user._id === user.id)
+//    .map((tweet, index) => <Tweet tweet={tweet} key={index} />);
+
 export default TweetList;
