@@ -63,7 +63,9 @@ function DinamicSidebar() {
               <p className="m-0 fw-bold ">
                 {userData.firstname} {userData.lastname}
               </p>
-              <p className="m-0 ">@{userData.username}</p>
+              <p className="m-0 ">
+                <small>@{userData.username}</small>
+              </p>
             </div>
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
