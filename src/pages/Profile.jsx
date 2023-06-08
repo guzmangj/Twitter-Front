@@ -1,29 +1,16 @@
 import StaticSidebar from "../components/sidebar/StaticSidebar";
 import DinamicSidebar from "../components/sidebar/DinamicSidebar";
 import UserCard from "../components/user/UserCard";
-import TweetList from "../components/tweet/TweetList";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Tweet from "../components/tweet/Tweet";
 
 function Profile() {
   const [userInfo, setUserInfo] = useState("");
   const user = useSelector((state) => state.user);
-  // useEffect(() => {
-  //   async function getUserInfo() {
-  //     const response = await axios({
-  //       method: "get",
-  //       url: "http://localhost:3000/profile",
-  //       headers: {
-  //         Authorization: `Bearer ${user.token}`,
-  //       },
-  //     });
-  //     setUserInfo(response.data);
-  //   }
-
-  //   getUserInfo();
-  // }, []);
+  const tweet = useSelector((state) => state.tweet);
   const params = useParams();
 
   useEffect(() => {
@@ -49,7 +36,11 @@ function Profile() {
         </div>
         <div className="col-md-11 col-lg-7 col-xl-7">
           <UserCard userInfo={userInfo} />
-          <TweetList />
+          {tweet
+            .filter((userTweet) => userTweet.user._id === params.id)
+            .map((tweet, index) => (
+              <Tweet tweet={tweet} key={index} />
+            ))}
         </div>
         <div className="d-none d-lg-block col-md-4 col-xl-3">
           <StaticSidebar />
