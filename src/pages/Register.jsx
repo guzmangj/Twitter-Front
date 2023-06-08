@@ -1,7 +1,45 @@
-import React from "react";
+import { useState } from "react";
 import "./Register.css";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { setToken } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 function Register() {
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [firstnameValue, setFirstnameValue] = useState("");
+  const [lastnameValue, setLastnameValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const register = await axios({
+      method: "post",
+      url: "http://localhost:3000/user",
+      data: {
+        email: emailValue,
+        password: passwordValue,
+        firstname: firstnameValue,
+        lastname: lastnameValue,
+        username: usernameValue,
+      },
+    });
+    const login = await axios({
+      method: "post",
+      url: "http://localhost:3000/login",
+      data: {
+        email: emailValue,
+        password: passwordValue,
+      },
+    });
+    login.data.token && dispatch(setToken(login.data.token));
+    navigate("/home");
+  }
+
   return (
     <main style={{ background: "var(--color-secundario)" }}>
       <div className="container d-flex align-items-center justify-content-center vh-100">
@@ -21,7 +59,7 @@ function Register() {
           </div>
           <div className="login-container col-sm-12 col-md-7 col-lg-5 bg-white rounded-end d-flex align-items-center">
             <div className="container mx-4">
-              <form method="post" action="/usuarios/crear">
+              <form onSubmit={handleSubmit}>
                 <div className="container p-2 mb-2">
                   <h1 style={{ color: "#353535", fontSize: "24px", marginBottom: "8px" }}>
                     Sign up
@@ -35,8 +73,10 @@ function Register() {
                     name="firstname"
                     type="text"
                     className="form-control"
-                    placeholder="First name"
+                    placeholder="Firstname"
                     style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
+                    value={firstnameValue}
+                    onChange={(e) => setFirstnameValue(e.target.value)}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -44,8 +84,10 @@ function Register() {
                     name="lastname"
                     type="text"
                     className="form-control"
-                    placeholder="Last name"
+                    placeholder="Lastname"
                     style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
+                    value={lastnameValue}
+                    onChange={(e) => setLastnameValue(e.target.value)}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -57,6 +99,8 @@ function Register() {
                     aria-describedby="emailHelp"
                     placeholder="Email"
                     style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
+                    value={emailValue}
+                    onChange={(e) => setEmailValue(e.target.value)}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -66,6 +110,8 @@ function Register() {
                     className="form-control"
                     placeholder="Username"
                     style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
+                    value={usernameValue}
+                    onChange={(e) => setUsernameValue(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
@@ -84,6 +130,8 @@ function Register() {
                     id="exampleInputPassword1"
                     placeholder="Password"
                     style={{ fontSize: "12px", padding: "8px 12px 8px 12px" }}
+                    value={passwordValue}
+                    onChange={(e) => setPasswordValue(e.target.value)}
                   />
                 </div>
                 <button type="submit" className="btn btn-login rounded-pill w-100 mb-4">
@@ -93,7 +141,7 @@ function Register() {
                   <p style={{ color: "#353535", fontWeight: "350", fontSize: "12px" }}>
                     Already have an account?
                   </p>
-                  <a
+                  <Link
                     style={{
                       color: "var(--color-principal)",
                       fontWeight: "300",
@@ -101,10 +149,10 @@ function Register() {
                       textDecoration: "none",
                       paddingLeft: "3px",
                     }}
-                    href="/login"
+                    to="/"
                   >
-                    Sign in
-                  </a>
+                    Log in
+                  </Link>
                 </div>
               </form>
             </div>
