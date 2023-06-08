@@ -10,22 +10,36 @@ import { useDispatch, useSelector } from "react-redux";
 import "./TweetList.css";
 
 function TweetList() {
+  const [userInfo, setUserInfo] = useState("");
   const user = useSelector((state) => state.user);
   const [tweets, setTweets] = useState("");
   const dispatch = useDispatch();
+
   useEffect(() => {
     async function getTweets() {
       const response = await axios({
         method: "get",
         url: "http://localhost:3000/tweets",
       });
-
-      //   dispatch(setTweets(response.data.token));
       setTweets(response.data);
     }
     getTweets();
   }, []);
-  console.log(user.id);
+
+  useEffect(() => {
+    async function getUserInfo() {
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:3000/profile",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      setUserInfo(response.data);
+    }
+    getUserInfo();
+  }, []);
+  console.log(userInfo);
 
   return (
     tweets &&
@@ -93,7 +107,7 @@ function TweetList() {
                 </div>
                 <div>{tweet.likes.length}</div>
               </div>
-              {user.id === tweet.user._id ? (
+              {userInfo.id === tweet.user._id ? (
                 <div>
                   <form method="post" action="">
                     <img src={Delete} alt="Delete icon" />
