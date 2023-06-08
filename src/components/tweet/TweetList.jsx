@@ -1,8 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Delete from "/src/assets/delete.svg";
-import Like from "/src/assets/like.svg";
-import Likeactive from "/src/assets/like-active.svg";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +22,7 @@ function TweetList() {
     getTweets();
   }, []);
 
-  return tweet && tweet.map((tweet) => <Tweet tweet={tweet} />);
+  return tweet && tweet.map((tweet, index) => <Tweet tweet={tweet} key={index} />);
 }
 
 export default TweetList;
