@@ -15,7 +15,7 @@ function DinamicSidebar() {
     async function getUserData() {
       const response = await axios({
         method: "get",
-        url: "http://localhost:3000/users",
+        url: "http://localhost:3000/user",
       });
       setUserData(response.data);
     }
@@ -34,8 +34,8 @@ function DinamicSidebar() {
           </Link>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
-          <Link to="/home" id="homeHover">
-            <li className="nav-item d-flex align-items-center py-2 mx-3 fs-5">
+          <Link to="/home" id="homeHover" className="my-2">
+            <li className="nav-item d-flex align-items-center  mx-3 fs-5">
               <img
                 src={HomeLogo}
                 alt="Logo Home"
@@ -46,8 +46,8 @@ function DinamicSidebar() {
               <span className="sidebarText">Home</span>
             </li>
           </Link>
-          <Link to="/profile" id="profileHover">
-            <li className="nav-item d-flex align-items-center py-2 mx-3 fs-5">
+          <Link to="/profile" id="profileHover" className="my-2">
+            <li className="nav-item d-flex align-items-center  mx-3 fs-5">
               <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
               <span className="sidebarText">Profile</span>
             </li>
