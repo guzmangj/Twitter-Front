@@ -13,7 +13,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Route>
     </Routes>
   );
