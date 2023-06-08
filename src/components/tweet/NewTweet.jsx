@@ -37,6 +37,7 @@ function NewTweet() {
               name=""
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
+              required
             />
           </div>
           <div className="d-flex justify-content-end">
