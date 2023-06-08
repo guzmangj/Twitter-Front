@@ -70,7 +70,7 @@ function DinamicSidebar() {
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="/profile">Edit your profile</Dropdown.Item>
                 <Dropdown.Item href="/">Log out</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

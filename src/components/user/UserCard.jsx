@@ -20,7 +20,7 @@ function UserCard({ userInfo }) {
             <div className="d-flex justify-content-between">
               <span
                 id="avatar"
-                style={{ width: "150px", borderRadius: "50%", border: "white", border: "5px" }}
+                style={{ width: "150px", borderRadius: "50%", borderColor: "white", border: "5px" }}
               ></span>
               {/* {  if(loggedUser.id !== user.id) { 
            if(loggedUser.following.includes(user.id)) {  

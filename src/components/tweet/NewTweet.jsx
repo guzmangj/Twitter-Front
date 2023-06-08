@@ -21,7 +21,7 @@ function NewTweet() {
             src={userImage.image}
             alt="Profile picture default"
             style={{ width: "50px", height: "50px" }}
-            className="rounded-circle"
+            className="rounded-circle mt-4"
           />
           <form
             className="form-floating flex-fill mx-2"
@@ -40,6 +40,7 @@ function NewTweet() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 style={{ border: "0", height: "60px" }}
+                required
               />
             </div>
 
