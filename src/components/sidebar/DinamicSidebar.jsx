@@ -52,7 +52,7 @@ function DinamicSidebar() {
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
-              src="https://github.com/mdo.png"
+              src={userData.image}
               alt="User avatar"
               width="40"
               height="40"
