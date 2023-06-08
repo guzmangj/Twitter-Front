@@ -8,7 +8,7 @@ import "./DinamicSidebar.css";
 import { useSelector } from "react-redux";
 
 function DinamicSidebar() {
-  const userData = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
 
   return (
     <>
@@ -34,7 +34,7 @@ function DinamicSidebar() {
               <span className="sidebarText">Home</span>
             </li>
           </Link>
-          <Link to="/profile" id="profileHover" className="my-2">
+          <Link to={`/profile/${user.id}`} id="profileHover" className="my-2">
             <li className="nav-item d-flex align-items-center  mx-3 fs-5">
               <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
               <span className="sidebarText">Profile</span>
@@ -52,7 +52,11 @@ function DinamicSidebar() {
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
-              src={userData.image}
+              src={
+                user.image.includes("https")
+                  ? user.image
+                  : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${user.image}`
+              }
               alt="User avatar"
               width="40"
               height="40"
@@ -61,10 +65,10 @@ function DinamicSidebar() {
 
             <div className=" flex-fill">
               <p className="m-0 fw-bold ">
-                {userData.firstname} {userData.lastname}
+                {user.firstname} {user.lastname}
               </p>
               <p className="m-0 ">
-                <small>@{userData.username}</small>
+                <small>@{user.username}</small>
               </p>
             </div>
             <Dropdown>

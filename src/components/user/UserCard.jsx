@@ -14,7 +14,11 @@ function UserCard({ userInfo }) {
             <div id="divImageProfile">
               <img
                 id="imageProfile"
-                src={`${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userInfo.image}`}
+                src={
+                  userInfo.image.includes("https")
+                    ? userInfo.image
+                    : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userInfo.image}`
+                }
               />
             </div>
             <div className="d-flex justify-content-between">
