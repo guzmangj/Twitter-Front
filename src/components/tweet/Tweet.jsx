@@ -4,7 +4,6 @@ import Delete from "/src/assets/delete.svg";
 import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
 import { useSelector } from "react-redux";
-import "./TweetList.css";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
