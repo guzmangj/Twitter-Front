@@ -1,7 +1,9 @@
 import React from "react";
 import "./UserCard.css";
+import { NavLink } from "react-router-dom";
 
 function UserCard({ userInfo }) {
+  console.log(userInfo);
   return (
     userInfo && (
       <section>
@@ -57,19 +59,24 @@ function UserCard({ userInfo }) {
                 </h2>
                 <h3 className="small">@{userInfo.username}</h3>
               </div>
-              <div className="align-self-end" id="userFollowers">
+              <div className="align-self-end" id="userFollowing">
                 <span className="fw-semibold">{userInfo.following.length}</span>
                 <span className="small me-3">
-                  <a style={{ textDecoration: "none", color: "black" }}> Following</a>
+                  <NavLink
+                    to={`/profile/${userInfo.id}/following`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    Following
+                  </NavLink>
                 </span>
                 <span className="fw-semibold">{userInfo.followers.length} </span>
                 <span className="small">
-                  <a
+                  <NavLink
+                    to={`/profile/${userInfo.id}/followers`}
                     style={{ textDecoration: "none", color: "black" }}
-                    href="/usuarios/<%=user.id%>/followers"
                   >
                     Followers
-                  </a>
+                  </NavLink>
                 </span>
               </div>
             </div>

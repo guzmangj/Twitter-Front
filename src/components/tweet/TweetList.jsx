@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setTweets } from "../../redux/tweetSlice";
 import Tweet from "./Tweet";
 
-import "./TweetList.css";
-
 function TweetList() {
   const tweet = useSelector((state) => state.tweet);
   const dispatch = useDispatch();
