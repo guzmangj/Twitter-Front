@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 function DinamicSidebar() {
   const user = useSelector((state) => state.user);
-
+  console.log(user);
   return (
     <>
       <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
@@ -62,7 +62,6 @@ function DinamicSidebar() {
               height="40"
               className="rounded-circle me-2 "
             />
-
             <div className=" flex-fill">
               <p className="m-0 fw-bold ">
                 {user.firstname} {user.lastname}
@@ -74,7 +73,6 @@ function DinamicSidebar() {
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="/profile">Edit your profile</Dropdown.Item>
                 <Dropdown.Item href="/">Log out</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
