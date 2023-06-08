@@ -11,33 +11,36 @@ function Register() {
   const [firstnameValue, setFirstnameValue] = useState("");
   const [lastnameValue, setLastnameValue] = useState("");
   const [usernameValue, setUsernameValue] = useState("");
+  const [imageValue, setimageValue] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   async function handleSubmit(event) {
     event.preventDefault();
+    const formData = new FormData();
+    formData.append("email", emailValue);
+    formData.append("password", passwordValue);
+    formData.append("firstname", firstnameValue);
+    formData.append("lastname", lastnameValue);
+    formData.append("username", usernameValue);
+    formData.append("image", imageValue);
     const register = await axios({
       method: "post",
       url: "http://localhost:3000/user",
-      data: {
-        email: emailValue,
-        password: passwordValue,
-        firstname: firstnameValue,
-        lastname: lastnameValue,
-        username: usernameValue,
-      },
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
     });
-    const login = await axios({
-      method: "post",
-      url: "http://localhost:3000/login",
-      data: {
-        email: emailValue,
-        password: passwordValue,
-      },
-    });
-    login.data.token && dispatch(setToken(login.data.token));
-    navigate("/home");
+    // const login = await axios({
+    //   method: "post",
+    //   url: "http://localhost:3000/login",
+    //   data: {
+    //     email: emailValue,
+    //     password: passwordValue,
+    //   },
+    // });
+    // login.data.token && dispatch(setToken(login.data.token));
+    navigate("/");
   }
 
   return (
@@ -120,6 +123,7 @@ function Register() {
                     type="file"
                     id="formFile"
                     style={{ fontSize: "12px" }}
+                    onChange={(e) => setimageValue(e.target.files[0])}
                   />
                 </div>
                 <div className="form-group mb-3">
