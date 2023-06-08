@@ -20,6 +20,7 @@ function DinamicSidebar() {
     }
     getUserData();
   }, [userData]);
+  console.log(userData);
 
   return (
     <>
@@ -65,8 +66,10 @@ function DinamicSidebar() {
             />
 
             <div className=" flex-fill">
-              <p className="m-0 fw-bold ">Nombre de usuario</p>
-              <p className="m-0 ">@Username</p>
+              <p className="m-0 fw-bold ">
+                {userData.firstname} {userData.lastname}
+              </p>
+              <p className="m-0 ">@{userData.username}</p>
             </div>
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
