@@ -49,12 +49,15 @@ function TweetList() {
           <div className="w-100">
             <div className="d-flex justify-content-between" style={{ height: "20%" }}>
               <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
-                <NavLink to="/profile" style={{ textDecoration: "none", color: "black" }}>
+                <NavLink
+                  to={`/profile/${tweet.user.username}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   {tweet.user.firstname} {tweet.user.lastname}
                 </NavLink>
                 <span className="tweet-username fw-light" style={{ color: "#888" }}>
                   <NavLink
-                    to="/profile"
+                    to={`/profile/${tweet.user.username}`}
                     style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
                   >
                     @{tweet.user.username}
