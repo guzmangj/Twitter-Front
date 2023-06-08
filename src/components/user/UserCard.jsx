@@ -12,7 +12,10 @@ function UserCard({ userInfo }) {
           ></div>
           <div className="container pt-3 border border-top-0" style={{ position: "relative" }}>
             <div id="divImageProfile">
-              <img id="imageProfile" src={userInfo.image} />
+              <img
+                id="imageProfile"
+                src={`${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userInfo.image}`}
+              />
             </div>
             <div className="d-flex justify-content-between">
               <span

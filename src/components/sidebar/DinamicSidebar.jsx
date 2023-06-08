@@ -52,7 +52,7 @@ function DinamicSidebar() {
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
-              src="https://github.com/mdo.png"
+              src={userData.image}
               alt="User avatar"
               width="40"
               height="40"
@@ -63,7 +63,9 @@ function DinamicSidebar() {
               <p className="m-0 fw-bold ">
                 {userData.firstname} {userData.lastname}
               </p>
-              <p className="m-0 ">@{userData.username}</p>
+              <p className="m-0 ">
+                <small>@{userData.username}</small>
+              </p>
             </div>
             <Dropdown>
               <Dropdown.Toggle variant="transparent" id="dropdown-basic"></Dropdown.Toggle>
