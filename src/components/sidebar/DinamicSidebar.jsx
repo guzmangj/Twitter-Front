@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import TwitterLogo from "../../assets/twitter-logo.svg";
 import HomeLogo from "../../assets/home.svg";
 import ProfileLogo from "../../assets/profile.svg";
+import Write from "../../assets/write.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DinamicSidebar.css";
 
@@ -27,18 +28,24 @@ function DinamicSidebar() {
                 height={23}
                 className="sidebarIcon me-3"
               />
-              Home
+              <span className="sidebarText">Home</span>
             </li>
           </Link>
           <Link to="/profile" id="profileHover">
             <li className="nav-item d-flex align-items-center py-2 mx-3 fs-5">
               <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
-              Profile
+              <span className="sidebarText">Profile</span>
             </li>
           </Link>
 
-          <button className="btn btn-login rounded-pill my-2 fs-5 fw-bold py-2">Tweet</button>
+          <Link to="/home">
+            <button className="btn btn-login rounded-pill my-2 fs-5 fw-bold py-2 tweetButton">
+              <span className="sidebarText">Tweet</span>
+            </button>
+            <img src={Write} alt="Tweet write" className="tweetImage me-3" />
+          </Link>
         </ul>
+
         <div id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img

@@ -27,7 +27,18 @@ a {
   width: 8.1rem;
 }
 
-a:hover {
-  text-decoration: none;
-  color: black;
+@media (max-width: 1199px) {
+  .sidebarText {
+    display: none;
+  }
+
+  .tweetImage {
+    display: block !important;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .tweetButton {
+    display: none;
+  }
 }
