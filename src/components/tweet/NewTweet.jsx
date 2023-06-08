@@ -18,7 +18,7 @@ function NewTweet() {
             src={userImage.image}
             alt="Profile picture default"
             style={{ width: "50px", height: "50px" }}
-            className="rounded-circle"
+            className="rounded-circle mt-4"
           />
         </div>
         <form
