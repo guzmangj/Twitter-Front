@@ -20,8 +20,8 @@ function NewTweet() {
           <img
             src={userImage.image}
             alt="Profile picture default"
-            style={{ width: "50px", height: "50px" }}
-            className="rounded-circle mt-4"
+            style={{ width: "60px", height: "60px" }}
+            className="rounded-circle"
           />
           <form
             className="form-floating flex-fill mx-2"
@@ -32,7 +32,7 @@ function NewTweet() {
           >
             <div>
               <input
-                className="input-text"
+                className="input-text "
                 placeholder="What's happening?"
                 id="tweetContent"
                 rows="3"
