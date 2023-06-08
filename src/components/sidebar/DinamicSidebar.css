@@ -1,8 +1,16 @@
 #logoutButton {
-  position: fixed;
   bottom: 0;
-  width: 14.5rem;
+  left: 38px;
+  width: 10.3rem;
   margin-bottom: 1rem;
+}
+
+#tweetButton {
+  width: 12rem;
+}
+
+#dropdown-basic {
+  padding: 0.9rem !important;
 }
 
 a {
@@ -25,6 +33,7 @@ a {
   #homeHover:hover {
     background-color: rgba(128, 128, 128, 0.164);
     border-radius: 1.5rem;
+    height: 100%;
     width: 8.1rem;
   }
 }
@@ -36,11 +45,33 @@ a {
 
   .tweetImage {
     display: block !important;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
-  .tweetButton {
+  #tweetButton {
+    width: 3.2rem !important;
+    height: 3.2rem;
+  }
+  #logoutButton {
+    width: 1.3rem;
+  }
+  #dropdown-basic {
+    padding: 0px !important;
+  }
+  .userText {
     display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebarTotal {
+    left: 7px;
+  }
+  #logoutButton {
+    bottom: 0;
+    left: -46px;
+    width: 10.3rem;
+    margin-bottom: 1rem;
   }
 }

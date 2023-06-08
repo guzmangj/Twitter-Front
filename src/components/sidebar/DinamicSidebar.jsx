@@ -13,43 +13,48 @@ function DinamicSidebar() {
   return (
     <>
       <div className="bg-white d-flex flex-column flex-shrink-0 p-3 bg-light ">
-        <div className="my-3 mb-md-0">
-          <Link
-            to="/home"
-            className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
-          >
-            <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
-          </Link>
+        <div className="position-fixed sidebarTotal">
+          <div className="my-3 mb-md-0">
+            <Link
+              to="/home"
+              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+            >
+              <img className="mb-3 mx-3" src={TwitterLogo} alt="Twitter Logo" />
+            </Link>
+          </div>
+          <ul className="nav nav-pills flex-column mb-auto">
+            <Link to="/home" id="homeHover" className="py-2">
+              <li className="nav-item d-flex align-items-center  mx-3 fs-5">
+                <img
+                  src={HomeLogo}
+                  alt="Logo Home"
+                  width={23}
+                  height={23}
+                  className="sidebarIcon me-3"
+                />
+                <span className="sidebarText">Home</span>
+              </li>
+            </Link>
+            <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
+              <li className="nav-item d-flex align-items-center mx-3 fs-5">
+                <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
+                <span className="sidebarText">Profile</span>
+              </li>
+            </Link>
+
+            <Link to="/home">
+              <button
+                id="tweetButton"
+                className="btn btn-login rounded-pill py-2 fs-5 fw-bold mt-2 py-2"
+              >
+                <span className="sidebarText">Tweet</span>
+                <img src={Write} alt="Tweet write" className="d-none tweetImage me-3" />
+              </button>
+            </Link>
+          </ul>
         </div>
-        <ul className="nav nav-pills flex-column mb-auto">
-          <Link to="/home" id="homeHover" className="my-2">
-            <li className="nav-item d-flex align-items-center  mx-3 fs-5">
-              <img
-                src={HomeLogo}
-                alt="Logo Home"
-                width={23}
-                height={23}
-                className="sidebarIcon me-3"
-              />
-              <span className="sidebarText">Home</span>
-            </li>
-          </Link>
-          <Link to={`/profile/${user.id}`} id="profileHover" className="my-2">
-            <li className="nav-item d-flex align-items-center  mx-3 fs-5">
-              <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
-              <span className="sidebarText">Profile</span>
-            </li>
-          </Link>
 
-          <Link to="/home">
-            <button className="btn btn-login rounded-pill my-2 fs-5 fw-bold py-2 tweetButton">
-              <span className="sidebarText">Tweet</span>
-            </button>
-            <img src={Write} alt="Tweet write" className="tweetImage me-3" />
-          </Link>
-        </ul>
-
-        <div id="logoutButton">
+        <div className="position-fixed sidebarTotal" id="logoutButton">
           <div className="d-flex justify-content-center align-items-center">
             <img
               src={
@@ -62,7 +67,8 @@ function DinamicSidebar() {
               height="40"
               className="rounded-circle me-2 "
             />
-            <div className=" flex-fill">
+
+            <div className="userText flex-fill">
               <p className="m-0 fw-bold ">
                 {user.firstname} {user.lastname}
               </p>
