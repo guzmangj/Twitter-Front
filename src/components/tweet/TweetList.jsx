@@ -8,7 +8,6 @@ import Tweet from "./Tweet";
 function TweetList() {
   const tweets = useSelector((state) => state.tweets);
   const user = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function TweetList() {
       const isCurrentUser = tweet.user._id === user.id;
 
       if (isFollowing || isCurrentUser) {
-        return <Tweet tweet={tweet} key={tweet._id} />;
+        return <Tweet tweet={tweet} key={tweet.id} />;
       }
 
       return null;

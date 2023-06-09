@@ -7,7 +7,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function UserFollowers() {
+function Followers() {
   const user = useSelector((state) => state.user);
   const [userInfo, setUserInfo] = useState(null);
   const params = useParams();
@@ -87,7 +87,7 @@ function UserFollowers() {
             <div className="border border-top-0 p-3">
               <ul>
                 {userInfo.followers.map((follower) => (
-                  <UserFollower follower={follower} />
+                  <UserFollower follower={follower} key={follower._id} />
                 ))}
               </ul>
             </div>
@@ -101,4 +101,4 @@ function UserFollowers() {
   );
 }
 
-export default UserFollowers;
+export default Followers;
