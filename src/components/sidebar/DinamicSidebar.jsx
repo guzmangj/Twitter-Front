@@ -41,12 +41,14 @@ function DinamicSidebar() {
             </Link>
           </div>
           <div>
-            <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
-              <div className="nav-item d-flex align-items-center mx-3 fs-5">
-                <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
-                <span className="sidebarText">Profile</span>
-              </div>
-            </Link>
+            <div className="nav nav-pills flex-column mb-auto">
+              <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
+                <div className="nav-item d-flex align-items-center mx-3 fs-5">
+                  <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
+                  <span className="sidebarText">Profile</span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
         <div>
