@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Followers from "./pages/Followers";
 import Following from "./pages/Following";
+import Error404 from "./pages/Error404";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/profile/:id/following" element={<Following />} />
         <Route path="/" element={<Home />} />
       </Route>
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }
