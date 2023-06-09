@@ -10,7 +10,7 @@ import Tweet from "../components/tweet/Tweet";
 function Profile() {
   const [userInfo, setUserInfo] = useState(null);
   const user = useSelector((state) => state.user);
-  const tweet = useSelector((state) => state.tweet);
+  const tweets = useSelector((state) => state.tweets);
   const params = useParams();
 
   useEffect(() => {
@@ -37,8 +37,8 @@ function Profile() {
           </div>
           <div className="col-md-11 col-lg-7 col-xl-7">
             <UserCard userInfo={userInfo} />
-            {tweet
-              .filter((userTweet) => userTweet.user._id === params.id)
+            {tweets
+              .filter((tweet) => tweet.user._id === params.id)
               .map((tweet, index) => (
                 <Tweet tweet={tweet} key={index} />
               ))}

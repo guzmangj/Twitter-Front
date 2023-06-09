@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const tweetSlice = createSlice({
-  name: "tweet",
-  initialState: null,
+  name: "tweets",
+  initialState: [],
   reducers: {
     setTweets(state, action) {
       return action.payload;
@@ -11,7 +11,7 @@ const tweetSlice = createSlice({
       state.push(action.payload.tweet);
     },
     deleteTweet(state, action) {
-      return;
+      return state.filter((tweet) => tweet._id !== action.payload._id);
     },
   },
 });
