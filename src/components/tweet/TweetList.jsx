@@ -6,9 +6,8 @@ import { setTweets } from "../../redux/tweetSlice";
 import Tweet from "./Tweet";
 
 function TweetList() {
-  const tweet = useSelector((state) => state.tweet);
+  const tweets = useSelector((state) => state.tweets);
   const user = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,13 +22,13 @@ function TweetList() {
   }, []);
 
   return (
-    tweet &&
-    tweet.map((tweet, index) => {
+    tweets.length > 0 &&
+    tweets.map((tweet) => {
       const isFollowing = user.following.includes(tweet.user._id);
       const isCurrentUser = tweet.user._id === user.id;
 
       if (isFollowing || isCurrentUser) {
-        return <Tweet tweet={tweet} key={index} />;
+        return <Tweet tweet={tweet} key={tweet.id} />;
       }
 
       return null;

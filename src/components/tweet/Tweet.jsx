@@ -3,10 +3,26 @@ import { NavLink } from "react-router-dom";
 import Delete from "/src/assets/delete.svg";
 import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTweet } from "../../redux/tweetSlice";
+import axios from "axios";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  async function deleteTweets(event) {
+    event.preventDefault();
+    const response = await axios({
+      method: "DELETE",
+      url: `http://localhost:3000/tweets/${tweet._id}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    dispatch(deleteTweet(tweet));
+  }
 
   return (
     <div key={tweet._id} className="tweet border border-top-0 p-3">
@@ -86,8 +102,10 @@ function Tweet({ tweet }) {
 
             {user.id === tweet.user._id ? (
               <div>
-                <form method="post" action="">
-                  <img src={Delete} alt="Delete icon" />
+                <form onSubmit={deleteTweets}>
+                  <button className="btn-delete" type="submit">
+                    <img src={Delete} alt="Delete icon" />
+                  </button>
                 </form>
               </div>
             ) : (

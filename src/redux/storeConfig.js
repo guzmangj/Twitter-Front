@@ -7,7 +7,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 const reducer = combineReducers({
   user: userReducer,
-  tweet: tweetReducer,
+  tweets: tweetReducer,
 });
 
 const persistConfig = {
