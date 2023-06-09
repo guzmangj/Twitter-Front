@@ -1,9 +1,7 @@
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 import createTweet from "../../redux/tweetSlice";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "./NewTweet.css";
 
