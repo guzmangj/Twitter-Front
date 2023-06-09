@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import StaticSidebar from "../components/sidebar/StaticSidebar";
 import DinamicSidebar from "../components/sidebar/DinamicSidebar";
+import UserFollower from "../components/user/UserFollower";
 import { NavLink, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -15,7 +16,7 @@ function UserFollowers() {
     async function getUsers() {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3000/profile/${params.id}`,
+        url: `http://localhost:3000/user/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -37,9 +38,9 @@ function UserFollowers() {
               <div className="d-flex align-items-center">
                 <div>
                   <div>
-                    <a href="/usuarios/<%=user.id%>">
+                    <NavLink to={`/profile/${userInfo.id}`}>
                       <i className="fa-solid fa-arrow-left" style={{ color: "black" }}></i>
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
                 <div className="mx-4">
@@ -57,17 +58,25 @@ function UserFollowers() {
               <div className="d-flex justify-content-around">
                 <div
                   className="border-bottom border-4"
-                  style={{ borderColor: "var(--color-principal) !important" }}
+                  style={{ borderColor: "var(--color-principal)" }}
                 >
                   <h5 className="mb-2">
-                    <NavLink style={{ textDecoration: "none", color: "black" }}>Followers</NavLink>
+                    <NavLink
+                      to={`/profile/${userInfo.id}/followers`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      Followers
+                    </NavLink>
                   </h5>
                 </div>
 
                 <div>
                   <div>
                     <h5 className="mb-2">
-                      <NavLink style={{ textDecoration: "none", color: "black" }}>
+                      <NavLink
+                        to={`/profile/${userInfo.id}/following`}
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
                         Following
                       </NavLink>
                     </h5>
@@ -77,8 +86,8 @@ function UserFollowers() {
             </div>
             <div className="border border-top-0 p-3">
               <ul>
-                {userInfo.following.map((following) => (
-                  <li>{following}</li>
+                {userInfo.followers.map((follower) => (
+                  <UserFollower follower={follower} />
                 ))}
               </ul>
             </div>

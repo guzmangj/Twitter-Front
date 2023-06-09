@@ -1,9 +1,11 @@
 import React from "react";
 import "./UserCard.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function UserCard({ userInfo }) {
-  console.log(userInfo);
+  const user = useSelector((state) => state.user);
+
   return (
     userInfo && (
       <section>
@@ -51,6 +53,32 @@ function UserCard({ userInfo }) {
             </form>
              } 
           }  */}
+              {userInfo.followers.includes(user.id) ? (
+                <form method="post">
+                  <button
+                    type="submit"
+                    className="btn btn-login rounded-pill p-1"
+                    style={{
+                      width: "90px",
+                      color: "black",
+                      borderColor: "rgb(196, 196, 196)",
+                      backgroundColor: "rgb(255, 255, 255)",
+                    }}
+                  >
+                    Following
+                  </button>
+                </form>
+              ) : (
+                <form method="post">
+                  <button
+                    type="submit"
+                    className="btn btn-login rounded-pill p-1"
+                    style={{ width: "90px" }}
+                  >
+                    Follow
+                  </button>
+                </form>
+              )}
             </div>
             <div className="d-flex justify-content-between" id="userInfo">
               <div id="username" className="mt-5">
