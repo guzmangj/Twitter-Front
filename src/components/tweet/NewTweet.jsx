@@ -11,23 +11,28 @@ function NewTweet() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const tweet = useSelector((state) => state.tweet);
 
-  useEffect(() => {
-    async function newTweet() {
-      const response = await axios({
-        method: "POST",
-        url: "http://localhost:3000/tweets",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-        data: {
-          content: inputValue,
-        },
-      });
-      console.log(response.data);
-    }
-    newTweet();
-  }, []);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:3000/tweets",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+      data: {
+        content: inputValue,
+      },
+    });
+    dispatch(createTweet({ content: inputValue }));
+    setInputValue("");
+  }
+
+  // Console log de prueba para ver tweets de usuario logueado
+  // console.log(
+  //   tweet.filter((userTweet) => userTweet.user._id === user.id).map((tweet, index) => tweet),
+  // );
 
   return (
     <section>
@@ -46,14 +51,7 @@ function NewTweet() {
             style={{ width: "60px", height: "60px" }}
             className="rounded-circle"
           />
-          <form
-            className="form-floating flex-fill mx-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-              dispatch(createTweet(inputValue));
-              setInputValue("");
-            }}
-          >
+          <form className="form-floating flex-fill mx-2" onSubmit={handleSubmit}>
             <div>
               <input
                 className="input-text "
