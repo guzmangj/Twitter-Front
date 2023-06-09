@@ -1,9 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { follow } from "../../redux/userSlice";
 
 function UserFollowing({ following }) {
   const user = useSelector((state) => state.user);
-  console.log(following.followers);
+  const dispatch = useDispatch();
+  async function handleSubmit() {
+    const response = await axios({
+      method: "post",
+      url: `http://localhost:3000/user/follow`,
+      data: { following },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    dispatch(follow(following._id));
+  }
+
   return (
     user.id !== following._id && (
       <div className="d-flex">
@@ -24,7 +38,12 @@ function UserFollowing({ following }) {
         </div>
         <div className="mb-3 d-flex align-items-center">
           {following.followers.includes(user.id) ? (
-            <form method="post">
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                handleSubmit();
+              }}
+            >
               <button
                 type="submit"
                 className="btn btn-login rounded-pill p-1"
@@ -39,7 +58,12 @@ function UserFollowing({ following }) {
               </button>
             </form>
           ) : (
-            <form method="post">
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                handleSubmit();
+              }}
+            >
               <button
                 type="submit"
                 className="btn btn-login rounded-pill p-1"
