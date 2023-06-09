@@ -40,7 +40,7 @@ function Register() {
     //   },
     // });
     // login.data.token && dispatch(setToken(login.data.token));
-    navigate("/");
+    navigate("/login");
   }
 
   return (

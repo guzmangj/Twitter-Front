@@ -11,13 +11,13 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile/:id/followers" element={<UserFollowers />} />
         <Route path="/profile/:id/following" element={<UserFollowing />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Route>
     </Routes>
   );
