@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import createTweet from "../../redux/tweetSlice";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
 import "./NewTweet.css";
 
 function NewTweet() {
@@ -10,11 +12,22 @@ function NewTweet() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createTweet(inputValue));
-    setInputValue("");
-  };
+  useEffect(() => {
+    async function newTweet() {
+      const response = await axios({
+        method: "POST",
+        url: "http://localhost:3000/tweets",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+        data: {
+          content: inputValue,
+        },
+      });
+      console.log(response.data);
+    }
+    newTweet();
+  }, []);
 
   return (
     <section>
@@ -33,12 +46,19 @@ function NewTweet() {
             style={{ width: "60px", height: "60px" }}
             className="rounded-circle"
           />
-          <form className="form-floating flex-fill mx-2" onSubmit={handleFormSubmit}>
+          <form
+            className="form-floating flex-fill mx-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(createTweet(inputValue));
+              setInputValue("");
+            }}
+          >
             <div>
               <input
                 className="input-text "
                 placeholder="What's happening?"
-                id="tweetContent"
+                id="content"
                 rows="3"
                 name="content"
                 value={inputValue}
