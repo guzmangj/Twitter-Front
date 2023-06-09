@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTweets } from "../../redux/tweetSlice";
 import Tweet from "./Tweet";
 
 function TweetList() {
   const tweet = useSelector((state) => state.tweet);
+  const user = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +22,19 @@ function TweetList() {
     getTweets();
   }, []);
 
-  return tweet && tweet.map((tweet, index) => <Tweet tweet={tweet} key={index} />);
-}
+  return (
+    tweet &&
+    tweet.map((tweet, index) => {
+      const isFollowing = user.following.includes(tweet.user._id);
+      const isCurrentUser = tweet.user._id === user.id;
 
-//  tweet
-//    .filter((tweet) => tweet.user._id === user.following || tweet.user._id === user.id)
-//    .map((tweet, index) => <Tweet tweet={tweet} key={index} />);
+      if (isFollowing || isCurrentUser) {
+        return <Tweet tweet={tweet} key={index} />;
+      }
+
+      return null;
+    })
+  );
+}
 
 export default TweetList;
