@@ -17,7 +17,7 @@ function Tweet({ tweet }) {
     event.preventDefault();
     const response = await axios({
       method: "DELETE",
-      url: `http://localhost:3000/tweets/${tweet._id}`,
+      url: `http://localhost:3000/tweets/${tweet.id}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
