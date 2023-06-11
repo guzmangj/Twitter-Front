@@ -14,7 +14,8 @@ const userSlice = createSlice({
       if (!state.following.includes(action.payload)) {
         state.following.push(action.payload);
       } else {
-        return state.following.filter((isFollowing) => isFollowing !== action.payload._id);
+        console.log(action.payload);
+        return state.following.filter((isFollowing) => isFollowing !== action.payload);
       }
     },
   },

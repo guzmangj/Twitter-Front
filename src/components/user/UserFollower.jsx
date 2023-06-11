@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { useState } from "react";
 import { follow } from "../../redux/userSlice";
 
 function UserFollower({ userData }) {
@@ -15,7 +16,7 @@ function UserFollower({ userData }) {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    dispatch(follow(userData));
+    dispatch(follow(userData.id));
   }
 
   return (

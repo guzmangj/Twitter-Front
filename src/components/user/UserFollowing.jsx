@@ -15,7 +15,7 @@ function UserFollowing({ userData }) {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    dispatch(follow(userData));
+    dispatch(follow(userData.id));
   }
 
   return (
