@@ -88,6 +88,7 @@ function Tweet({ tweet }) {
                 >
                   @{tweet.user.username}
                 </NavLink>
+
                 <span> • {formattedData(tweet.date)}</span>
               </span>
             </div>
