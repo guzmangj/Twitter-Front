@@ -63,7 +63,7 @@ function Tweet({ tweet }) {
                 >
                   @{tweet.user.username}
                 </NavLink>
-                {/* &bull; tweet.formattedData */}
+                <span> • {tweet.date}</span>
               </span>
             </div>
           </div>
