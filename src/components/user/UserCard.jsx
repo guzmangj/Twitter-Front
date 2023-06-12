@@ -68,7 +68,7 @@ function UserCard({ userInfo }) {
                 <h3 className="small">@{userInfo.username}</h3>
               </div>
               <div className="align-self-end" id="userFollowing">
-                <span className="fw-semibold">{userInfo.following.length}</span>
+                <span className="fw-semibold">{userInfo.following.length} </span>
                 <span className="small me-3">
                   <NavLink
                     to={`/profile/${userInfo.id}/following`}

@@ -153,14 +153,14 @@ function Tweet({ tweet }) {
                       onClick={() => handleDislike(tweet.id)}
                     />
                   </div>
-                  <div>{tweet.likes.length}</div>
+                  <span className="ms-1 mt-1"> {tweet.likes.length}</span>
                 </>
               ) : (
                 <>
                   <div>
                     <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
                   </div>
-                  <div>{tweet.likes.length}</div>
+                  <span className="ms-1 mt-1"> {tweet.likes.length}</span>
                 </>
               )}
             </div>
