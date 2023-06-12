@@ -19,7 +19,7 @@ function Profile() {
     async function getUsers() {
       const response1 = await axios({
         method: "GET",
-        url: `http://localhost:3000/users/${params.id}`,
+        url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -28,10 +28,9 @@ function Profile() {
 
       const response2 = await axios({
         method: "GET",
-        url: "http://localhost:3000/tweets" + `?id=${response1.data.id}`,
+        url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/tweets` + `?id=${response1.data.id}`,
       });
       response2.data && dispatch(setTweets(response2.data));
-      console.log(response2.data);
     }
 
     getUsers();

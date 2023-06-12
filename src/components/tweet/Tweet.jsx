@@ -16,10 +16,9 @@ function Tweet({ tweet }) {
 
   async function deleteTweets(event) {
     event.preventDefault();
-    console.log(tweet.id);
     const response = await axios({
       method: "DELETE",
-      url: `http://localhost:3000/tweets/${tweet.id}`,
+      url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/tweets/${tweet.id}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },

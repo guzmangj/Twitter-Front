@@ -9,7 +9,7 @@ function UserFollower({ userData }) {
   async function handleSubmit() {
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/users/follow`,
+      url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/follow`,
       data: { userData },
       headers: {
         Authorization: `Bearer ${user.token}`,
