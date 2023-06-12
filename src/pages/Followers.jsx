@@ -30,10 +30,10 @@ function Followers() {
     userInfo && (
       <section className="container">
         <div className="row">
-          <div className="col-md-1 col-lg-1 col-xl-2">
+          <div className="col-1 col-lg-1 col-xl-2 sidebar">
             <DinamicSidebar />
           </div>
-          <div className="col-md-11 col-lg-7 col-xl-7">
+          <div className="col-11 col-lg-7 col-xl-7 tweets">
             <div className="border pt-4 px-4">
               <div className="d-flex align-items-center">
                 <div>
@@ -92,7 +92,7 @@ function Followers() {
               </ul>
             </div>
           </div>
-          <div className="d-none d-lg-block col-md-4 col-xl-3">
+          <div className="d-none d-lg-block col-lg-4 col-xl-3">
             <StaticSidebar />
           </div>
         </div>

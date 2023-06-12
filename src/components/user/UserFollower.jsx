@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { useState } from "react";
 import { follow } from "../../redux/userSlice";
 
 function UserFollower({ userData }) {
@@ -38,7 +37,7 @@ function UserFollower({ userData }) {
           <dd className="m-0">@{userData.username}</dd>
         </div>
         <div className="mb-3 d-flex align-items-center">
-          {userData.followers.includes(user.id) ? (
+          {user.following.includes(userData.id) ? (
             <form
               onSubmit={(event) => {
                 event.preventDefault();
