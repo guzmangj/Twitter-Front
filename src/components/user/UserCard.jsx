@@ -1,15 +1,32 @@
 import React from "react";
 import "./UserCard.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { follow } from "../../redux/userSlice";
+import axios from "axios";
 
-function UserCard({ userInfo }) {
+function UserCard({ userData }) {
   const user = useSelector((state) => state.user);
   const params = useParams();
+  const dispatch = useDispatch();
+
+  async function handleSubmit() {
+    const response = await axios({
+      method: "post",
+      url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/follow`,
+      data: { userData },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    dispatch(follow(userData.id));
+  }
+
+  console.log(userData);
 
   return (
-    userInfo && (
+    userData && (
       <section>
         <div className="container p-0">
           <div
@@ -21,9 +38,9 @@ function UserCard({ userInfo }) {
               <img
                 id="imageProfile"
                 src={
-                  userInfo.image.includes("https")
-                    ? userInfo.image
-                    : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userInfo.image}`
+                  userData.image.includes("https")
+                    ? userData.image
+                    : `${import.meta.env.VITE_IMAGE_CLOUD_DIRECTION}/${userData.image}`
                 }
               />
             </div>
@@ -34,7 +51,12 @@ function UserCard({ userInfo }) {
               ></span>
               {user.id !== params.id &&
                 (user.following.includes(params.id) ? (
-                  <form method="post">
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      handleSubmit();
+                    }}
+                  >
                     <button
                       type="submit"
                       className="btn btn-login rounded-pill p-1"
@@ -49,7 +71,12 @@ function UserCard({ userInfo }) {
                     </button>
                   </form>
                 ) : (
-                  <form method="post">
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      handleSubmit();
+                    }}
+                  >
                     <button
                       type="submit"
                       className="btn btn-login rounded-pill p-1"
@@ -60,27 +87,27 @@ function UserCard({ userInfo }) {
                   </form>
                 ))}
             </div>
-            <div className="d-flex justify-content-between" id="userInfo">
+            <div className="d-flex justify-content-between" id="userData">
               <div id="username" className="mt-5">
                 <h2 className="m-0 fs-4">
-                  {userInfo.firstname} {userInfo.lastname}
+                  {userData.firstname} {userData.lastname}
                 </h2>
-                <h3 className="small">@{userInfo.username}</h3>
+                <h3 className="small">@{userData.username}</h3>
               </div>
               <div className="align-self-end" id="userFollowing">
-                <span className="fw-semibold">{userInfo.following.length} </span>
+                <span className="fw-semibold">{userData.following.length} </span>
                 <span className="small me-3">
                   <NavLink
-                    to={`/profile/${userInfo.id}/following`}
+                    to={`/profile/${userData.id}/following`}
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     Following
                   </NavLink>
                 </span>
-                <span className="fw-semibold">{userInfo.followers.length} </span>
+                <span className="fw-semibold">{userData.followers.length} </span>
                 <span className="small">
                   <NavLink
-                    to={`/profile/${userInfo.id}/followers`}
+                    to={`/profile/${userData.id}/followers`}
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     Followers

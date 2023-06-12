@@ -18,7 +18,6 @@ function UserFollower({ userData }) {
     });
     dispatch(follow(userData.id));
   }
-
   return (
     user.id !== userData.id && (
       <div className="d-flex">
