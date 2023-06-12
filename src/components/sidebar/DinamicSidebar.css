@@ -13,19 +13,6 @@
   padding: 0 1rem !important;
 }
 
-#profileHover:hover {
-  background-color: rgba(128, 128, 128, 0.164);
-  border-radius: 1.5rem;
-  width: 8.05rem;
-}
-
-#homeHover:hover {
-  background-color: rgba(128, 128, 128, 0.164);
-  border-radius: 1.5rem;
-  height: 100%;
-  width: 8.1rem;
-}
-
 #profileHover {
   text-decoration: none;
   color: black;
@@ -69,19 +56,6 @@
 }
 
 @media (max-width: 1399px) {
-  #profileHover:hover {
-    background-color: rgba(128, 128, 128, 0.164);
-    border-radius: 1.5rem;
-    width: 8.05rem;
-  }
-
-  #homeHover:hover {
-    background-color: rgba(128, 128, 128, 0.164);
-    border-radius: 1.5rem;
-    height: 100%;
-    width: 8.1rem;
-  }
-
   #logoutButton {
     bottom: 0;
     width: 11rem;
@@ -127,5 +101,20 @@
     bottom: 0;
     width: 3.3rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #profileHover:hover {
+    background-color: rgba(128, 128, 128, 0.164);
+    border-radius: 1.5rem;
+    width: 8.05rem;
+  }
+
+  #homeHover:hover {
+    background-color: rgba(128, 128, 128, 0.164);
+    border-radius: 1.5rem;
+    height: 100%;
+    width: 8.1rem;
   }
 }
