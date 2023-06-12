@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useState } from "react";
-import createTweet from "../../redux/tweetSlice";
+import { createTweet } from "../../redux/tweetSlice";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "./NewTweet.css";
@@ -23,7 +23,20 @@ function NewTweet() {
         content: inputValue,
       },
     });
-    dispatch(createTweet({ content: inputValue }));
+    dispatch(
+      createTweet({
+        user: {
+          image: user.image,
+          _id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          username: user.username,
+        },
+        content: inputValue,
+        likes: [],
+        date: new Date(),
+      }),
+    );
     setInputValue("");
   }
 

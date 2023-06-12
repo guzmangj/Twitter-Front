@@ -8,7 +8,7 @@ const tweetSlice = createSlice({
       return action.payload;
     },
     createTweet(state, action) {
-      state.push(action.payload.tweet);
+      state.unshift(action.payload);
     },
     deleteTweet(state, action) {
       return state.filter((tweet) => tweet._id !== action.payload._id);

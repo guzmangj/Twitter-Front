@@ -7,23 +7,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteTweet } from "../../redux/tweetSlice";
 import axios from "axios";
 import "./Tweet.css";
+//import { useParams } from "react-router-dom";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
-
+  //const params = useParams();
   const dispatch = useDispatch();
 
   async function deleteTweets(event) {
     event.preventDefault();
     const response = await axios({
       method: "DELETE",
-      url: `http://localhost:3000/tweets/${tweet._id}`,
+      url: `http://localhost:3000/tweets/${tweet.id}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    dispatch(deleteTweet(tweet));
+    dispatch(deleteTweet(tweet.id));
   }
+  //console.log(tweet.id);
 
   return (
     <div key={tweet._id} className="tweet border border-top-0 p-3">
