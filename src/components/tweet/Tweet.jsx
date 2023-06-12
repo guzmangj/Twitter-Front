@@ -3,11 +3,56 @@ import { NavLink } from "react-router-dom";
 import Delete from "/src/assets/delete.svg";
 import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useState } from "react";
+import { likeTweet } from "../../redux/tweetSlice";
+import { dislikeTweet } from "../../redux/tweetSlice";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
+  const [tweetData, setTweetData] = useState(tweet);
+  const dispatch = useDispatch();
 
+  const handleLike = async (tweetId) => {
+    const data = {
+      userId: user.id,
+    };
+    await axios
+      .post(`http://localhost:3000/like/${tweetId}`, data)
+      .then((response) => {
+        console.log("Like successful", response.data);
+        dispatch(
+          likeTweet({
+            tweetId,
+            userId: user.id,
+          }),
+        );
+      })
+      .catch((error) => {
+        console.error("Error liking tweet", error);
+      });
+  };
+
+  const handleDislike = async (tweetId) => {
+    const data = {
+      userId: user.id,
+    };
+    await axios
+      .post(`http://localhost:3000/dislike/${tweetId}`, data)
+      .then((response) => {
+        console.log("Dislike successful", response.data);
+        dispatch(
+          dislikeTweet({
+            tweetId,
+            userId: user.id,
+          }),
+        );
+      })
+      .catch((error) => {
+        console.error("Error disliking tweet", error);
+      });
+  };
   return (
     <div key={tweet._id} className="tweet border border-top-0 p-3">
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
@@ -66,20 +111,20 @@ function Tweet({ tweet }) {
               {tweet.likes.includes(user.id) ? (
                 <>
                   <div>
-                    <form method="post" action="/dislike/<%= tweet.id %>?_method=UPDATE">
-                      <img src={Likeactive} alt="Activelike icon" />
-                    </form>
+                    <img
+                      src={Likeactive}
+                      alt="Activelike icon"
+                      onClick={() => handleDislike(tweet._id)}
+                    />
                   </div>
-                  <div>{tweet.likes.length}</div>
+                  <div>{tweetData.likes.length}</div>
                 </>
               ) : (
                 <>
                   <div>
-                    <form method="post" action="/like/<%= tweet.id %>?_method=UPDATE">
-                      <img src={Like} alt="Like icon" />
-                    </form>
+                    <img src={Like} alt="Like icon" onClick={() => handleLike(tweet._id)} />
                   </div>
-                  <div>{tweet.likes.length}</div>
+                  <div>{tweetData.likes.length}</div>
                 </>
               )}
             </div>

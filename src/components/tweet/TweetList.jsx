@@ -6,7 +6,7 @@ import { setTweets } from "../../redux/tweetSlice";
 import Tweet from "./Tweet";
 
 function TweetList() {
-  const tweet = useSelector((state) => state.tweet);
+  const tweets = useSelector((state) => state.tweet);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function TweetList() {
     getTweets();
   }, []);
 
-  return tweet && tweet.map((tweet, index) => <Tweet tweet={tweet} key={index} />);
+  return tweets && tweets.map((tweet, index) => <Tweet tweet={tweet} key={index} />);
 }
 
 //  tweet
