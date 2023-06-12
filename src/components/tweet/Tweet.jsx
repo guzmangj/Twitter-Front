@@ -16,7 +16,7 @@ function Tweet({ tweet }) {
     event.preventDefault();
     const response = await axios({
       method: "DELETE",
-      url: `http://localhost:3000/tweets/${tweet._id}`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/tweets/${tweet._id}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },

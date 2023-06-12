@@ -14,7 +14,7 @@ function TweetList() {
     async function getTweets() {
       const response = await axios({
         method: "get",
-        url: "http://localhost:3000/tweets",
+        url: `${process.env.REACT_APP_BACKEND_URL}/tweets`,
       });
       response.data && dispatch(setTweets(response.data));
     }

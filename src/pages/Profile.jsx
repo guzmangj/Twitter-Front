@@ -17,7 +17,7 @@ function Profile() {
     async function getUsers() {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3000/user/${params.id}`,
+        url: `${process.env.REACT_APP_BACKEND_URL}/users/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

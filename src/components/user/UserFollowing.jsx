@@ -9,7 +9,7 @@ function UserFollowing({ following }) {
   async function handleSubmit() {
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/user/follow`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/users/follow`,
       data: { following },
       headers: {
         Authorization: `Bearer ${user.token}`,

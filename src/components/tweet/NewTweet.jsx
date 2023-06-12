@@ -15,7 +15,7 @@ function NewTweet() {
     event.preventDefault();
     const response = await axios({
       method: "POST",
-      url: "http://localhost:3000/tweets",
+      url: `${process.env.REACT_APP_BACKEND_URL}/tweets`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },

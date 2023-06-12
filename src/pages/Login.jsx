@@ -16,7 +16,7 @@ function Login() {
     event.preventDefault();
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/login",
+      url: `${process.env.REACT_APP_BACKEND_URL}/login`,
       data: {
         email: emailValue,
         password: passwordValue,
