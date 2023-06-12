@@ -1,8 +1,12 @@
 #logoutButton {
   position: fixed;
   bottom: 0;
-  width: 13.3rem;
+  width: 13.5rem;
   margin-bottom: 1rem;
+}
+
+#dropdown-basic {
+  padding: 0 !important;
 }
 
 #tweetButton {
@@ -42,7 +46,7 @@
 @media (max-width: 1440px) {
   #logoutButton {
     bottom: 0;
-    width: 12rem;
+    width: 13.5rem;
     margin-bottom: 1rem;
   }
 
@@ -50,9 +54,9 @@
     width: 12rem;
   }
 
-  #dropdown-basic {
+  /* #dropdown-basic {
     padding: 0 0 !important;
-  }
+  } */
 }
 
 @media (max-width: 1399px) {

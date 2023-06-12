@@ -146,21 +146,25 @@ function Tweet({ tweet }) {
             <div className="tweet-actions d-flex align-items-center">
               {tweet.likes.includes(user.id) ? (
                 <>
-                  <div>
-                    <img
-                      src={Likeactive}
-                      alt="Activelike icon"
-                      onClick={() => handleDislike(tweet.id)}
-                    />
+                  <div className="d-flex justify-content-center">
+                    <div>
+                      <img
+                        src={Likeactive}
+                        alt="Activelike icon"
+                        onClick={() => handleDislike(tweet.id)}
+                      />
+                    </div>
+                    <div className="mx-1">{tweet.likes.length}</div>
                   </div>
-                  <div>{tweet.likes.length}</div>
                 </>
               ) : (
                 <>
-                  <div>
-                    <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
+                  <div className="d-flex align-items-center">
+                    <div>
+                      <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
+                    </div>
+                    <div className="mx-1">{tweet.likes.length}</div>
                   </div>
-                  <div>{tweet.likes.length}</div>
                 </>
               )}
             </div>
