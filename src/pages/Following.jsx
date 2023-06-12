@@ -16,7 +16,7 @@ function Following() {
     async function getUsers() {
       const response = await axios({
         method: "get",
-        url: `${process.env.REACT_APP_BACKEND_URL}/users/${params.id}`,
+        url: `http://localhost:3000/user/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

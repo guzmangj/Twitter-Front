@@ -27,7 +27,7 @@ function Register() {
     formData.append("image", imageValue);
     const register = await axios({
       method: "post",
-      url: `${process.env.REACT_APP_BACKEND_URL}/users`,
+      url: "http://localhost:3000/user",
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     });
