@@ -20,7 +20,7 @@ function UserFollowing({ userData }) {
   }
 
   return (
-    user.id !== userData._id && (
+    user.id !== userData.id && (
       <div className="d-flex">
         <div>
           <Link to={`/profile/${userData.id}`}>

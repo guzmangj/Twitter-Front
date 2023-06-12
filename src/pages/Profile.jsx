@@ -45,11 +45,9 @@ function Profile() {
           </div>
           <div className="col-11 col-lg-7 col-xl-7 tweets">
             <UserCard userInfo={userInfo} />
-            {tweets
-              /*               .filter((tweet) => tweet.user._id === params.id)
-               */ .map((tweet, index) => (
-                <Tweet tweet={tweet} key={index} />
-              ))}
+            {tweets.map((tweet, index) => (
+              <Tweet tweet={tweet} key={index} />
+            ))}
           </div>
           <div className="d-none d-lg-block col-lg-4 col-xl-3">
             <StaticSidebar />

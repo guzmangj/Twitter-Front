@@ -29,11 +29,6 @@ function NewTweet() {
     setInputValue("");
   }
 
-  // Console log de prueba para ver tweets de usuario logueado
-  // console.log(
-  //   tweet.filter((userTweet) => userTweet.user._id === user.id).map((tweet, index) => tweet),
-  // );
-
   return (
     <section>
       <div className="border p-3">
