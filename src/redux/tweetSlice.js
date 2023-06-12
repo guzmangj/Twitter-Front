@@ -5,7 +5,12 @@ const tweetSlice = createSlice({
   initialState: [],
   reducers: {
     setTweets(state, action) {
-      return action.payload;
+      const sortedTweets = [...action.payload].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB - dateA;
+      });
+      return sortedTweets;
     },
     createTweet(state, action) {
       state.unshift(action.payload);
