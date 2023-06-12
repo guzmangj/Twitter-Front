@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { follow } from "../../redux/userSlice";
+import { Link } from "react-router-dom";
 
 function UserFollower({ userData }) {
   const user = useSelector((state) => state.user);
@@ -22,19 +23,22 @@ function UserFollower({ userData }) {
     user.id !== userData.id && (
       <div className="d-flex">
         <div>
-          <img
-            src={userData.image}
-            alt="Profile picture default"
-            style={{ width: "40px", height: "40px" }}
-            className="rounded-circle m-0 mt-1"
-          />
+          <Link to={`/profile/${userData.id}`}>
+            <img
+              src={userData.image}
+              alt="Profile picture default"
+              style={{ width: "40px", height: "40px" }}
+              className="rounded-circle m-0 mt-1"
+            />
+          </Link>
         </div>
         <div className="mb-3 flex-fill mx-2">
-          <dl className="m-0 fs-5 fw-bold">
-            {userData.firstname}
-            {userData.lastname}
-          </dl>
-          <dd className="m-0">@{userData.username}</dd>
+          <Link className="text-decoration-none text-black" to={`/profile/${userData.id}`}>
+            <dl className="m-0 fs-5 fw-bold">
+              {userData.firstname} {userData.lastname}
+            </dl>
+            <dd className="m-0">@{userData.username}</dd>
+          </Link>
         </div>
         <div className="mb-3 d-flex align-items-center">
           {user.following.includes(userData.id) ? (

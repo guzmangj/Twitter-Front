@@ -63,6 +63,7 @@ function NewTweet() {
                 onChange={(e) => setInputValue(e.target.value)}
                 style={{ border: "0", height: "60px" }}
                 required
+                maxLength="140"
               />
             </div>
 
