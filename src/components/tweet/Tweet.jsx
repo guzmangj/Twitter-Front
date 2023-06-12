@@ -6,6 +6,7 @@ import Likeactive from "/src/assets/like-active.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTweet } from "../../redux/tweetSlice";
 import axios from "axios";
+import "./Tweet.css";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);

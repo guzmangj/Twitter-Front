@@ -13,8 +13,8 @@ function TweetList() {
   useEffect(() => {
     async function getTweets() {
       const response = await axios({
-        method: "get",
-        url: `${process.env.REACT_APP_BACKEND_URL}/tweets`,
+        method: "GET",
+        url: "http://localhost:3000/tweets",
       });
       response.data && dispatch(setTweets(response.data));
     }

@@ -11,11 +11,11 @@ const userSlice = createSlice({
       return null;
     },
     follow(state, action) {
-      const index = state.following.indexOf(action.payload);
-      if (index === -1) {
+      if (!state.following.includes(action.payload)) {
         state.following.push(action.payload);
       } else {
-        state.following.splice(index, 1);
+        console.log(action.payload);
+        return state.following.filter((isFollowing) => isFollowing !== action.payload);
       }
     },
   },

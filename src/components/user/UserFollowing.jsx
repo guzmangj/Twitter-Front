@@ -3,27 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { follow } from "../../redux/userSlice";
 
-function UserFollowing({ following }) {
+function UserFollowing({ userData }) {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   async function handleSubmit() {
     const response = await axios({
       method: "post",
-      url: `${process.env.REACT_APP_BACKEND_URL}/users/follow`,
-      data: { following },
+      url: `http://localhost:3000/user/follow`,
+      data: { userData },
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    dispatch(follow(following._id));
+    dispatch(follow(userData.id));
   }
 
   return (
-    user.id !== following._id && (
+    user.id !== userData._id && (
       <div className="d-flex">
         <div>
           <img
-            src={following.image}
+            src={userData.image}
             alt="Profile picture default"
             style={{ width: "40px", height: "40px" }}
             className="rounded-circle m-0 mt-1"
@@ -31,13 +31,13 @@ function UserFollowing({ following }) {
         </div>
         <div className="mb-3 flex-fill mx-2">
           <dl className="m-0 fs-5 fw-bold">
-            {following.firstname}
-            {following.lastname}
+            {userData.firstname}
+            {userData.lastname}
           </dl>
-          <dd className="m-0">@{following.username}</dd>
+          <dd className="m-0">@{userData.username}</dd>
         </div>
         <div className="mb-3 d-flex align-items-center">
-          {following.followers.includes(user.id) ? (
+          {userData.followers.includes(user.id) ? (
             <form
               onSubmit={(event) => {
                 event.preventDefault();
