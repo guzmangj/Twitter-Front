@@ -37,7 +37,7 @@ function UserFollowing({ userData }) {
           <dd className="m-0">@{userData.username}</dd>
         </div>
         <div className="mb-3 d-flex align-items-center">
-          {userData.followers.includes(user.id) ? (
+          {user.following.includes(userData.id) ? (
             <form
               onSubmit={(event) => {
                 event.preventDefault();
