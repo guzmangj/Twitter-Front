@@ -14,6 +14,31 @@ function Tweet({ tweet }) {
   //const params = useParams();
   const dispatch = useDispatch();
 
+  function formattedData(dateTweet) {
+    const currentDate = new Date();
+    dateTweet = new Date(tweet.date);
+
+    const isOldestTweet = dateTweet < currentDate - 1000 * 60 * 60 * 24 * 30;
+    const isOldTweet = dateTweet < currentDate - 1000 * 60 * 60 * 24;
+    const isTodayTweet = dateTweet > currentDate - 1000 * 60 * 60 * 24;
+    let formattedData;
+    if (isTodayTweet) {
+      const hours = Math.floor((currentDate - dateTweet) / (1000 * 60 * 60));
+      formattedData = `${hours} hours ago`;
+    }
+    if (isOldTweet) {
+      const day = dateTweet.toLocaleString("default", { day: "numeric" });
+      const month = dateTweet.toLocaleString("default", { month: "long" });
+      formattedData = `${month} ${day}`;
+    }
+    if (isOldestTweet) {
+      const month = dateTweet.toLocaleString("default", { month: "long" });
+      const year = dateTweet.getFullYear();
+      formattedData = `${month} ${year}`;
+    }
+    return formattedData;
+  }
+
   async function deleteTweets(event) {
     event.preventDefault();
     const response = await axios({
@@ -63,7 +88,7 @@ function Tweet({ tweet }) {
                 >
                   @{tweet.user.username}
                 </NavLink>
-                {/* &bull; tweet.formattedData */}
+                <span> • {formattedData(tweet.date)}</span>
               </span>
             </div>
           </div>
