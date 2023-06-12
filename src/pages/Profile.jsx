@@ -3,26 +3,35 @@ import DinamicSidebar from "../components/sidebar/DinamicSidebar";
 import UserCard from "../components/user/UserCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import Tweet from "../components/tweet/Tweet";
+import { setTweets } from "../redux/tweetSlice";
 
 function Profile() {
   const [userInfo, setUserInfo] = useState(null);
   const user = useSelector((state) => state.user);
   const tweets = useSelector((state) => state.tweets);
   const params = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getUsers() {
-      const response = await axios({
+      const response1 = await axios({
         method: "GET",
         url: `http://localhost:3000/users/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      setUserInfo(response.data);
+      setUserInfo(response1.data);
+
+      const response2 = await axios({
+        method: "GET",
+        url: "http://localhost:3000/tweets" + `?id=${response1.data.id}`,
+      });
+      response2.data && dispatch(setTweets(response2.data));
+      console.log(response2.data);
     }
 
     getUsers();
@@ -38,8 +47,8 @@ function Profile() {
           <div className="col-11 col-lg-7 col-xl-7 tweets">
             <UserCard userInfo={userInfo} />
             {tweets
-              .filter((tweet) => tweet.user._id === params.id)
-              .map((tweet, index) => (
+              /*               .filter((tweet) => tweet.user._id === params.id)
+               */ .map((tweet, index) => (
                 <Tweet tweet={tweet} key={index} />
               ))}
           </div>

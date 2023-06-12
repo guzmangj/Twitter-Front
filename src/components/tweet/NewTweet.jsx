@@ -23,20 +23,9 @@ function NewTweet() {
         content: inputValue,
       },
     });
-    dispatch(
-      createTweet({
-        user: {
-          image: user.image,
-          _id: user.id,
-          firstname: user.firstname,
-          lastname: user.lastname,
-          username: user.username,
-        },
-        content: inputValue,
-        likes: [],
-        date: new Date(),
-      }),
-    );
+    response.data.newTweet.user = response.data.user;
+
+    dispatch(createTweet(response.data.newTweet));
     setInputValue("");
   }
 

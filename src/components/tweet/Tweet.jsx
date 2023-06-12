@@ -16,6 +16,7 @@ function Tweet({ tweet }) {
 
   async function deleteTweets(event) {
     event.preventDefault();
+    console.log(tweet.id);
     const response = await axios({
       method: "DELETE",
       url: `http://localhost:3000/tweets/${tweet.id}`,
@@ -25,7 +26,6 @@ function Tweet({ tweet }) {
     });
     dispatch(deleteTweet(tweet.id));
   }
-  //console.log(tweet.id);
 
   return (
     <div key={tweet._id} className="tweet border border-top-0 p-3">

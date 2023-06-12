@@ -24,14 +24,7 @@ function TweetList() {
   return (
     tweets.length > 0 &&
     tweets.map((tweet) => {
-      const isFollowing = user.following.includes(tweet.user._id);
-      const isCurrentUser = tweet.user._id === user.id;
-
-      if (isFollowing || isCurrentUser) {
-        return <Tweet tweet={tweet} key={tweet.id} />;
-      }
-
-      return null;
+      return <Tweet tweet={tweet} key={tweet.id} />;
     })
   );
 }
