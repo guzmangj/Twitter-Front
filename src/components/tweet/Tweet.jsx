@@ -6,8 +6,8 @@ import Likeactive from "/src/assets/like-active.svg";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
-import { likeTweet } from "../../redux/tweetSlice";
-import { dislikeTweet } from "../../redux/tweetSlice";
+import { likeTweet, dislikeTweet, deleteTweet } from "../../redux/tweetSlice";
+import "./Tweet.css";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
@@ -33,8 +33,6 @@ function Tweet({ tweet }) {
         console.error("Error liking tweet", error);
       });
   };
-  //const params = useParams();
-  const dispatch = useDispatch();
 
   function formattedData(dateTweet) {
     const currentDate = new Date();
