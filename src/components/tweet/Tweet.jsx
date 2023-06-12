@@ -93,7 +93,7 @@ function Tweet({ tweet }) {
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
         <div>
           <NavLink
-            to={`/profile/${tweet.user._id}`}
+            to={`/profile/${tweet.user.id}`}
             style={{ textDecoration: "none", color: "black" }}
           >
             <img
@@ -113,14 +113,14 @@ function Tweet({ tweet }) {
           <div className="d-flex justify-content-between" style={{ height: "20%" }}>
             <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
               <NavLink
-                to={`/profile/${tweet.user._id}`}
+                to={`/profile/${tweet.user.id}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 {tweet.user.firstname} {tweet.user.lastname}
               </NavLink>
               <span className="tweet-username fw-light" style={{ color: "#888" }}>
                 <NavLink
-                  to={`/profile/${tweet.user._id}`}
+                  to={`/profile/${tweet.user.id}`}
                   style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
                 >
                   @{tweet.user.username}
@@ -165,7 +165,7 @@ function Tweet({ tweet }) {
               )}
             </div>
 
-            {user.id === tweet.user._id ? (
+            {user.id === tweet.user.id ? (
               <div>
                 <form onSubmit={deleteTweets}>
                   <button className="btn-delete" type="submit">
