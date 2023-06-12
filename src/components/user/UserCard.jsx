@@ -1,9 +1,13 @@
 import React from "react";
 import "./UserCard.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function UserCard({ userInfo }) {
-  console.log(userInfo);
+  const user = useSelector((state) => state.user);
+  const params = useParams();
+
   return (
     userInfo && (
       <section>
@@ -28,29 +32,33 @@ function UserCard({ userInfo }) {
                 id="avatar"
                 style={{ width: "150px", borderRadius: "50%", borderColor: "white", border: "5px" }}
               ></span>
-              {/* {  if(loggedUser.id !== user.id) { 
-           if(loggedUser.following.includes(user.id)) {  
-            <form method="post">
-              <button
-                type="submit"
-                className="btn btn-login rounded-pill p-1"
-                style={{ width: "90px" }}
-              >
-                Following
-              </button>
-            </form>
-            {/ } else {  }
-            <form method="post">
-              <button
-                type="submit"
-                className="btn btn-login rounded-pill p-1"
-                style={{ width: "90px" }}
-              >
-                Follow
-              </button>
-            </form>
-             } 
-          }  */}
+              {user.id !== params.id &&
+                (user.following.includes(params.id) ? (
+                  <form method="post">
+                    <button
+                      type="submit"
+                      className="btn btn-login rounded-pill p-1"
+                      style={{
+                        width: "90px",
+                        color: "black",
+                        borderColor: "rgb(196, 196, 196)",
+                        backgroundColor: "rgb(255, 255, 255)",
+                      }}
+                    >
+                      Following
+                    </button>
+                  </form>
+                ) : (
+                  <form method="post">
+                    <button
+                      type="submit"
+                      className="btn btn-login rounded-pill p-1"
+                      style={{ width: "90px" }}
+                    >
+                      Follow
+                    </button>
+                  </form>
+                ))}
             </div>
             <div className="d-flex justify-content-between" id="userInfo">
               <div id="username" className="mt-5">

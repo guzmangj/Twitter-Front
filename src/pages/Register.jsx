@@ -27,7 +27,7 @@ function Register() {
     formData.append("image", imageValue);
     const register = await axios({
       method: "post",
-      url: "http://localhost:3000/user",
+      url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users`,
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -40,7 +40,7 @@ function Register() {
     //   },
     // });
     // login.data.token && dispatch(setToken(login.data.token));
-    navigate("/");
+    navigate("/login");
   }
 
   return (

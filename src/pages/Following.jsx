@@ -2,11 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import StaticSidebar from "../components/sidebar/StaticSidebar";
 import DinamicSidebar from "../components/sidebar/DinamicSidebar";
+import UserFollowing from "../components/user/UserFollowing";
 import { NavLink, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function UserFollowers() {
+function Following() {
   const user = useSelector((state) => state.user);
   const [userInfo, setUserInfo] = useState(null);
   const params = useParams();
@@ -15,7 +16,7 @@ function UserFollowers() {
     async function getUsers() {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3000/profile/${params.id}`,
+        url: `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/users/${params.id}`,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -29,17 +30,17 @@ function UserFollowers() {
     userInfo && (
       <section className="container">
         <div className="row">
-          <div className="col-md-1 col-lg-1 col-xl-2">
+          <div className="col-1 col-lg-1 col-xl-2 sidebar">
             <DinamicSidebar />
           </div>
-          <div className="col-md-11 col-lg-7 col-xl-7">
+          <div className="col-11 col-lg-7 col-xl-7 tweets">
             <div className="border pt-4 px-4">
               <div className="d-flex align-items-center">
                 <div>
                   <div>
-                    <a href="/usuarios/<%=user.id%>">
+                    <NavLink to={`/profile/${userInfo.id}`}>
                       <i className="fa-solid fa-arrow-left" style={{ color: "black" }}></i>
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
                 <div className="mx-4">
@@ -55,19 +56,27 @@ function UserFollowers() {
                 </div>
               </div>
               <div className="d-flex justify-content-around">
-                <div
-                  className="border-bottom border-4"
-                  style={{ borderColor: "var(--color-principal) !important" }}
-                >
+                <div>
                   <h5 className="mb-2">
-                    <NavLink style={{ textDecoration: "none", color: "black" }}>Followers</NavLink>
+                    <NavLink
+                      to={`/profile/${userInfo.id}/followers`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      Followers
+                    </NavLink>
                   </h5>
                 </div>
 
                 <div>
-                  <div>
+                  <div
+                    className="border-bottom border-4"
+                    style={{ borderColor: "var(--color-principal)" }}
+                  >
                     <h5 className="mb-2">
-                      <NavLink style={{ textDecoration: "none", color: "black" }}>
+                      <NavLink
+                        to={`/profile/${userInfo.id}/following`}
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
                         Following
                       </NavLink>
                     </h5>
@@ -77,13 +86,13 @@ function UserFollowers() {
             </div>
             <div className="border border-top-0 p-3">
               <ul>
-                {userInfo.following.map((following) => (
-                  <li>{following}</li>
+                {userInfo.following.map((userData) => (
+                  <UserFollowing userData={userData} key={userData._id} />
                 ))}
               </ul>
             </div>
           </div>
-          <div className="d-none d-lg-block col-md-4 col-xl-3">
+          <div className="d-none d-lg-block col-lg-4 col-xl-3">
             <StaticSidebar />
           </div>
         </div>
@@ -92,4 +101,4 @@ function UserFollowers() {
   );
 }
 
-export default UserFollowers;
+export default Following;

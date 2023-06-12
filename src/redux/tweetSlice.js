@@ -1,14 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const tweetSlice = createSlice({
-  name: "tweet",
-  initialState: null,
+  name: "tweets",
+  initialState: [],
   reducers: {
     setTweets(state, action) {
-      return action.payload;
+      const sortedTweets = [...action.payload].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB - dateA;
+      });
+      return sortedTweets;
     },
     createTweet(state, action) {
-      state.push(action.payload);
+      state.unshift(action.payload);
+    },
+    likeTweet(state, action) {
+      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
+      tweet.likes.push(action.payload.userId);
+    },
+    dislikeTweet(state, action) {
+      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
+      tweet.likes = tweet.likes.filter((user) => user !== action.payload.userId);
     },
     likeTweet(state, action) {
       const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
@@ -19,7 +32,7 @@ const tweetSlice = createSlice({
       tweet.likes = tweet.likes.filter((user) => user !== action.payload.userId);
     },
     deleteTweet(state, action) {
-      return state;
+      return state.filter((tweet) => tweet.id !== action.payload);
     },
   },
 });

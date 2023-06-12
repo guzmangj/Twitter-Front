@@ -12,14 +12,13 @@ function DinamicSidebar() {
   const user = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  console.log(user);
   return (
     <>
       <div className="position-fixed">
         <div className="my-3 mb-md-0">
           <div className="my-3 mb-md-0">
             <Link
-              to="/home"
+              to="/"
               className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
             >
               <div>
@@ -28,7 +27,7 @@ function DinamicSidebar() {
             </Link>
           </div>
           <div className="nav nav-pills flex-column mb-auto">
-            <Link to="/home" id="homeHover" className="py-2">
+            <Link to="/" id="homeHover" className="py-2">
               <div className="nav-item d-flex align-items-center  mx-3 fs-5">
                 <img
                   src={HomeLogo}
@@ -42,16 +41,18 @@ function DinamicSidebar() {
             </Link>
           </div>
           <div>
-            <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
-              <div className="nav-item d-flex align-items-center mx-3 fs-5">
-                <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
-                <span className="sidebarText">Profile</span>
-              </div>
-            </Link>
+            <div className="nav nav-pills flex-column mb-auto">
+              <Link to={`/profile/${user.id}`} id="profileHover" className="py-2">
+                <div className="nav-item d-flex align-items-center mx-3 fs-5">
+                  <img src={ProfileLogo} alt="Profile Logo" className="sidebarIcon me-3" />
+                  <span className="sidebarText">Profile</span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
         <div>
-          <Link to="/home">
+          <Link to="/">
             <button
               id="tweetButton"
               className="btn btn-login rounded-pill py-2 fs-5 fw-bold mt-2 py-2"
