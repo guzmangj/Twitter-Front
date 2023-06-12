@@ -20,5 +20,6 @@
 @media (max-width: 576px) {
   .tweets {
     margin-left: 55px;
+    margin-right: 55px;
   }
 }
