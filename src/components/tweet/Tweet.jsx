@@ -5,13 +5,11 @@ import Like from "/src/assets/like.svg";
 import Likeactive from "/src/assets/like-active.svg";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useState } from "react";
 import { likeTweet, dislikeTweet, deleteTweet } from "../../redux/tweetSlice";
 import "./Tweet.css";
 
 function Tweet({ tweet }) {
   const user = useSelector((state) => state.user);
-  const [tweetData, setTweetData] = useState(tweet);
   const dispatch = useDispatch();
 
   const handleLike = async (tweetId) => {
@@ -155,14 +153,14 @@ function Tweet({ tweet }) {
                       onClick={() => handleDislike(tweet.id)}
                     />
                   </div>
-                  <div>{tweetData.likes.length}</div>
+                  <div>{tweet.likes.length}</div>
                 </>
               ) : (
                 <>
                   <div>
                     <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
                   </div>
-                  <div>{tweetData.likes.length}</div>
+                  <div>{tweet.likes.length}</div>
                 </>
               )}
             </div>
