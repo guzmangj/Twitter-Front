@@ -16,19 +16,11 @@ const tweetSlice = createSlice({
       state.unshift(action.payload);
     },
     likeTweet(state, action) {
-      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
+      const tweet = state.find((tweet) => tweet.id === action.payload.tweetId);
       tweet.likes.push(action.payload.userId);
     },
     dislikeTweet(state, action) {
-      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
-      tweet.likes = tweet.likes.filter((user) => user !== action.payload.userId);
-    },
-    likeTweet(state, action) {
-      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
-      tweet.likes.push(action.payload.userId);
-    },
-    dislikeTweet(state, action) {
-      const tweet = state.find((tweet) => tweet._id === action.payload.tweetId);
+      const tweet = state.find((tweet) => tweet.id === action.payload.tweetId);
       tweet.likes = tweet.likes.filter((user) => user !== action.payload.userId);
     },
     deleteTweet(state, action) {

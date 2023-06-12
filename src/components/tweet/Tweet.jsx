@@ -91,7 +91,7 @@ function Tweet({ tweet }) {
       });
   };
   return (
-    <div key={tweet._id} className="tweet border border-top-0 p-3">
+    <div key={tweet.id} className="tweet border border-top-0 p-3">
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
         <div>
           <NavLink
@@ -152,7 +152,7 @@ function Tweet({ tweet }) {
                     <img
                       src={Likeactive}
                       alt="Activelike icon"
-                      onClick={() => handleDislike(tweet._id)}
+                      onClick={() => handleDislike(tweet.id)}
                     />
                   </div>
                   <div>{tweetData.likes.length}</div>
@@ -160,7 +160,7 @@ function Tweet({ tweet }) {
               ) : (
                 <>
                   <div>
-                    <img src={Like} alt="Like icon" onClick={() => handleLike(tweet._id)} />
+                    <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
                   </div>
                   <div>{tweetData.likes.length}</div>
                 </>
