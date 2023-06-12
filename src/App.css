@@ -2,3 +2,23 @@
   color: white;
   background: var(--color-principal);
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding-right: 1rem;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tweets {
+    margin-left: 55px;
+  }
+}
