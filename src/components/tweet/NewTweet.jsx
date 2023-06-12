@@ -49,7 +49,7 @@ function NewTweet() {
           <form className="form-floating flex-fill mx-2" onSubmit={handleSubmit}>
             <div>
               <input
-                className="input-text "
+                className="input-text px-3"
                 placeholder="What's happening?"
                 id="content"
                 rows="3"
