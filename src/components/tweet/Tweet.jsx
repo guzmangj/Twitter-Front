@@ -93,7 +93,7 @@ function Tweet({ tweet }) {
       <div className="tweet-header d-flex" style={{ marginBottom: "0px 0px 10px" }}>
         <div>
           <NavLink
-            to={`/profile/${tweet.user._id}`}
+            to={`/profile/${tweet.user.id}`}
             style={{ textDecoration: "none", color: "black" }}
           >
             <img
@@ -113,14 +113,14 @@ function Tweet({ tweet }) {
           <div className="d-flex justify-content-between" style={{ height: "20%" }}>
             <div className="tweet-fullname d-flex" style={{ fontWeight: "bold" }}>
               <NavLink
-                to={`/profile/${tweet.user._id}`}
+                to={`/profile/${tweet.user.id}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 {tweet.user.firstname} {tweet.user.lastname}
               </NavLink>
               <span className="tweet-username fw-light" style={{ color: "#888" }}>
                 <NavLink
-                  to={`/profile/${tweet.user._id}`}
+                  to={`/profile/${tweet.user.id}`}
                   style={{ textDecoration: "none", color: "#888", marginLeft: "0.3rem" }}
                 >
                   @{tweet.user.username}
@@ -146,30 +146,26 @@ function Tweet({ tweet }) {
             <div className="tweet-actions d-flex align-items-center">
               {tweet.likes.includes(user.id) ? (
                 <>
-                  <div className="d-flex justify-content-center">
-                    <div>
-                      <img
-                        src={Likeactive}
-                        alt="Activelike icon"
-                        onClick={() => handleDislike(tweet.id)}
-                      />
-                    </div>
-                    <div className="mx-1">{tweet.likes.length}</div>
+                  <div>
+                    <img
+                      src={Likeactive}
+                      alt="Activelike icon"
+                      onClick={() => handleDislike(tweet.id)}
+                    />
                   </div>
+                  <span className="ms-1 mt-1"> {tweet.likes.length}</span>
                 </>
               ) : (
                 <>
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
-                    </div>
-                    <div className="mx-1">{tweet.likes.length}</div>
+                  <div>
+                    <img src={Like} alt="Like icon" onClick={() => handleLike(tweet.id)} />
                   </div>
+                  <span className="ms-1 mt-1"> {tweet.likes.length}</span>
                 </>
               )}
             </div>
 
-            {user.id === tweet.user._id ? (
+            {user.id === tweet.user.id ? (
               <div>
                 <form onSubmit={deleteTweets}>
                   <button className="btn-delete" type="submit">

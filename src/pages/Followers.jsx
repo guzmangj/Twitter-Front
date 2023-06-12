@@ -87,7 +87,7 @@ function Followers() {
             <div className="border border-top-0 p-3">
               <ul>
                 {userInfo.followers.map((userData) => (
-                  <UserFollower userData={userData} key={userData._id} />
+                  <UserFollower userData={userData} key={userData.id} />
                 ))}
               </ul>
             </div>

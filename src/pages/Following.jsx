@@ -87,7 +87,7 @@ function Following() {
             <div className="border border-top-0 p-3">
               <ul>
                 {userInfo.following.map((userData) => (
-                  <UserFollowing userData={userData} key={userData._id} />
+                  <UserFollowing userData={userData} key={userData.id} />
                 ))}
               </ul>
             </div>
