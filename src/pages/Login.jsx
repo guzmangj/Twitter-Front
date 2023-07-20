@@ -9,8 +9,8 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [emailValue, setEmailValue] = useState("Ricardo.Quintero@yahoo.com");
+  const [passwordValue, setPasswordValue] = useState("123456");
 
   async function handleSubmit(event) {
     event.preventDefault();
